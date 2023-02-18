@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_/screens/record_screen.dart';
 
 class GenerateScreen extends StatelessWidget {
   @override
@@ -9,38 +10,43 @@ class GenerateScreen extends StatelessWidget {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
               child: Text(
-                '측정 생성',
+                '새로운 녹음',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+              margin: EdgeInsets.only(bottom: 30),
             ),
-            Column(children: <Widget>[
-              SettingBox(title: '장소', height: 110, context: 'context'),
-              SettingBox(title: '시간', height: 110, context: 'context'),
-              SettingBox(title: '메모', height: 300, context: 'context')
-            ]),
-            ElevatedButton(onPressed: () {}, child: Text('완료')),
+            SettingBox(txt: '제목'),
+            SettingBox(txt: '위치'),
+            SettingBox(txt: '메모'),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => RecordScreen(
+                        title: '제목',
+                        location: '위치',
+                        memo: '메모',
+                      )));
+                },
+                child: Text('완료')),
           ]),
         ));
   }
 }
 
 class SettingBox extends StatelessWidget {
-  final String title;
-  final double height;
-  final String context;
-  SettingBox(
-      {required this.title, required this.height, required this.context});
+  final String txt;
+  SettingBox({required this.txt});
+
   @override
   Widget build(BuildContext context) {
     return Container(
         width: 350,
-        height: height,
-        margin: const EdgeInsets.all(15.0),
-        padding: const EdgeInsets.all(15.0),
+        height: txt == '메모' ? 300 : 60,
+        margin: const EdgeInsets.all(13.0),
+        padding: const EdgeInsets.only(left: 15, top: 3),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.0),
             border: Border.all(
@@ -48,21 +54,30 @@ class SettingBox extends StatelessWidget {
         //child: Text(title),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 17,
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: '$title 입력하기',
-              ),
-            )
-          ],
+          children: [StringInput(txt: txt)],
         ));
+  }
+}
+class StringInput extends StatelessWidget {
+  final String txt;
+  StringInput({required this.txt});
+
+  @override
+  Widget build(BuildContext context) {
+    String input = "";
+    return Container(
+      child: TextField(
+        keyboardType: TextInputType.multiline,
+        maxLines: 14,
+        minLines: 1,
+        onChanged: (value) {
+          input = value;
+        },
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: '$txt',
+        ),
+      ),
+    );
   }
 }
