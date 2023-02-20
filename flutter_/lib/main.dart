@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_/screens/list_screen.dart';
 import 'package:flutter_/screens/tmp.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Color(0xff4285F4),
       ),
       */
-      home: Tmp()
+      home: ListScreen()
     );
   }
 }

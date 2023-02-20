@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_/screens/record_screen.dart';
 
 class GenerateScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +26,7 @@ class GenerateScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => RecordScreen(
-                        title: '제목',
-                        location: '위치',
-                        memo: '메모',
-                      )));
+                          )));
                 },
                 child: Text('완료')),
           ]),
@@ -42,6 +40,7 @@ class SettingBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String input = "";
     return Container(
         width: 350,
         height: txt == '메모' ? 300 : 60,
@@ -52,32 +51,19 @@ class SettingBox extends StatelessWidget {
             border: Border.all(
                 color: Color(0xff4285F4), style: BorderStyle.solid, width: 2)),
         //child: Text(title),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [StringInput(txt: txt)],
+        child: Container(
+          child: TextField(
+            keyboardType: TextInputType.multiline,
+            maxLines: 14,
+            minLines: 1,
+            onChanged: (value) {
+              input = value;
+            },
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: '$txt',
+            ),
+          ),
         ));
-  }
-}
-class StringInput extends StatelessWidget {
-  final String txt;
-  StringInput({required this.txt});
-
-  @override
-  Widget build(BuildContext context) {
-    String input = "";
-    return Container(
-      child: TextField(
-        keyboardType: TextInputType.multiline,
-        maxLines: 14,
-        minLines: 1,
-        onChanged: (value) {
-          input = value;
-        },
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '$txt',
-        ),
-      ),
-    );
   }
 }
