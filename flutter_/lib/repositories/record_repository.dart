@@ -5,13 +5,15 @@ class RecordRepository {
     Record(
       title: "녹음 1",
       location: "숙명여자대학교 명신관",
-      time: "시간 1",
+      date: "2023년 02월 28일",
+      time: "9:00 ~ 10:00",
       memo: "메모 1",
     ),
     Record(
       title: "녹음 2",
       location: "숙명여자대학교 과학관",
-      time: "시간 2",
+      date: "2023년 03월 01일",
+      time: "10:00 ~ 11:00",
       memo: "메모 2",
     ),
   ];

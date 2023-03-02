@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_/screens/record_screen.dart';
 
-class GenerateScreen extends StatelessWidget {
+class ModifyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class GenerateScreen extends StatelessWidget {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
               child: Text(
-                '새로운 녹음',
+                '기록 수정',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
