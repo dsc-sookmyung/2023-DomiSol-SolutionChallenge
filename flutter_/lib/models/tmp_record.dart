@@ -1,15 +1,13 @@
-class Record {
+import 'package:flutter/material.dart';
+
+class TmpRecord {
   final String title;
   final String location;
   final String date;
   final String time;
   final String memo;
 
-  var txt;
-
-  var name;
-
-  Record({
+  TmpRecord({
     required this.title,
     required this.location,
     required this.date,

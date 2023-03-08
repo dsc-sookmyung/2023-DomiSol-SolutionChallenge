@@ -1,24 +1,28 @@
-import 'package:flutter_/models/record.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_/models/board.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_/models/tmp_record.dart';
 
 class RecordRepository {
-  final List<Record> _dumyRerods = [
-    Record(
+
+  final List<TmpRecord> _dumyRerods = [
+    TmpRecord(
       title: "녹음 1",
       location: "숙명여자대학교 명신관",
-      date: "2023년 02월 28일",
-      time: "9:00 ~ 10:00",
+      date: DateTime.now().toString(),
+      time: TimeOfDay.now().toString(),
       memo: "메모 1",
     ),
-    Record(
+    TmpRecord(
       title: "녹음 2",
       location: "숙명여자대학교 과학관",
-      date: "2023년 03월 01일",
-      time: "10:00 ~ 11:00",
+      date: DateTime.now().toString(),
+      time: TimeOfDay.now().toString(),
       memo: "메모 2",
     ),
   ];
 
-  List<Record> getRecords() {
+  List<TmpRecord> getRecords() {
     return _dumyRerods;
   }
 }

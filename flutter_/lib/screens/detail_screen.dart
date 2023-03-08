@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_/models/record.dart';
+import 'package:flutter_/models/board.dart';
+import 'package:flutter_/models/tmp_record.dart';
 import 'package:flutter_/repositories/record_repository.dart';
 import 'package:flutter_/screens/record_screen.dart';
 
 class DetailScreen extends StatelessWidget {
-  final Record record = RecordRepository().getRecords().first;
+  final TmpRecord record = RecordRepository().getRecords().first;
 
   @override
   Widget build(BuildContext context) {

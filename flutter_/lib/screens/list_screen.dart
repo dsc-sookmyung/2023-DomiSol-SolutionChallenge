@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_/models/record.dart';
+import 'package:flutter_/models/tmp_record.dart';
 import 'package:flutter_/repositories/record_repository.dart';
 import 'package:flutter_/screens/modify_screen.dart';
 import 'package:flutter_/screens/detail_screen.dart';
 
 class ListScreen extends StatelessWidget {
-  final List<Record> records = RecordRepository().getRecords();
+  final List<TmpRecord> records = RecordRepository().getRecords();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class ListScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               color: Color.fromRGBO(227, 227, 227, 1),
             ),
-            height: 120,
+            height: 150,
             child: GestureDetector(
               onTap: () {
                 debugPrint('The record has been tapped');
