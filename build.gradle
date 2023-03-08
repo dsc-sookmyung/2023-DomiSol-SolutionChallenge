@@ -25,6 +25,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	//implementation 'mysql:mysql-connector-java'
 	runtimeOnly 'com.mysql:mysql-connector-j'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
