@@ -1,6 +1,6 @@
-package domisol.entity.board;
+package domisol.domain.board.entity;
 
-import domisol.entity.member.Member;
+import domisol.domain.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;

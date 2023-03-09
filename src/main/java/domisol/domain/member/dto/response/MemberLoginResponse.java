@@ -1,6 +1,6 @@
-package domisol.dto.response;
+package domisol.domain.member.dto.response;
 
-import domisol.entity.member.Member;
+import domisol.domain.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

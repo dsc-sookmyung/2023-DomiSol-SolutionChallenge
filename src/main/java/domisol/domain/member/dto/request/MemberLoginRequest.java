@@ -1,4 +1,4 @@
-package domisol.dto.request;
+package domisol.domain.member.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package domisol.entity.member;
+package domisol.domain.member.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
