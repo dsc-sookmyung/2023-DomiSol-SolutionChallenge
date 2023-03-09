@@ -1,19 +1,10 @@
 package domisol.service;
 
-import domisol.dto.request.MemberLoginRequest;
 import domisol.dto.response.MemberInfoResponse;
-import domisol.dto.response.MemberLoginResponse;
-import domisol.dto.response.TokenResponse;
-import domisol.entity.GoogleOAuth;
-import domisol.entity.Member;
-import domisol.global.BaseException;
+import domisol.entity.member.GoogleOAuth;
 import domisol.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-
-import static domisol.global.StatusCode.EMAIL_NOT_FOUND;
 
 @RequiredArgsConstructor
 @Service

@@ -1,4 +1,4 @@
-package domisol.entity;
+package domisol.entity.member;
 
 import domisol.dto.response.MemberInfoResponse;
 import lombok.RequiredArgsConstructor;
