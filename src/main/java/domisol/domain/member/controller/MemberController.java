@@ -1,6 +1,8 @@
 package domisol.domain.member.controller;
 
+import domisol.domain.member.dto.response.MemberInfoResponse;
 import domisol.domain.member.service.MemberService;
+import domisol.global.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,12 @@ public class MemberController {
     @GetMapping("/test")
     public void test() {
         System.out.println("test");
+    }
+
+    @ResponseBody
+    @GetMapping("info")
+    public BaseResponse<MemberInfoResponse> getMemberInfo(@RequestParam("code") String code) {
+        return new BaseResponse<>(memberService.getMemberInfo(code));
     }
 
 }
