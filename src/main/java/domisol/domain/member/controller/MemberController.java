@@ -21,8 +21,8 @@ public class MemberController {
 
     @ResponseBody
     @GetMapping("info")
-    public BaseResponse<MemberInfoResponse> getMemberInfo(@RequestParam("code") String code) {
-        return new BaseResponse<>(memberService.getMemberInfo(code));
+    public BaseResponse<MemberInfoResponse> login(@RequestParam("code") String code) {
+        return new BaseResponse<>(memberService.login(code));
     }
 
 }
