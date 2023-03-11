@@ -85,12 +85,15 @@ public class GoogleOAuth {
             JsonElement element = JsonParser.parseString(result);
             String email = element.getAsJsonObject().get("email").getAsString();
             String id = element.getAsJsonObject().get("id").getAsString();
+            String name = element.getAsJsonObject().get("name").getAsString();
             userInfo.put("email", email);
             userInfo.put("id", id);
+            userInfo.put("name", name);
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new MemberInfoResponse((String)userInfo.get("id"), (String)userInfo.get("email"));
+        return new MemberInfoResponse((String)userInfo.get("id"), (String)userInfo.get("email"), (String)userInfo.get("name"));
     }
 }

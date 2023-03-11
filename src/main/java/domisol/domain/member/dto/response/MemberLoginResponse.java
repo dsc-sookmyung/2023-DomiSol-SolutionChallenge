@@ -11,6 +11,7 @@ public class MemberLoginResponse {
     private String accessToken;
     private String refreshToken;
 
+
     public static MemberLoginResponse of(Member member, TokenResponse token) {
         return new MemberLoginResponse(member.getId(), token.getAccessToken(), token.getRefreshToken());
     }
