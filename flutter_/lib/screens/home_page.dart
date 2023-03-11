@@ -1,7 +1,7 @@
-import 'package:chicheck/widgets/login_auth.dart';
+import 'package:flutter_/widgets/login_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:chicheck/screens/main_page.dart';
-import 'package:chicheck/widgets/login_btn.dart';
+import 'package:flutter_/screens/main_page.dart';
+import 'package:flutter_/widgets/login_btn.dart';
 
 class HomePage extends StatefulWidget {
   @override

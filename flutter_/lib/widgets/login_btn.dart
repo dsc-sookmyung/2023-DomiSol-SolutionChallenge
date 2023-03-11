@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:chicheck/screens/main_page.dart';
-
+import 'package:flutter_/screens/main_page.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   @override

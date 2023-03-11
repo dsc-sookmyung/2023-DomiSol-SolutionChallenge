@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'dart:math';
-import 'package:chicheck/bar_chart_page.dart';
+import 'package:flutter_/bar_chart_page.dart';
 //import 'package:loginpage/widgets/graph.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 

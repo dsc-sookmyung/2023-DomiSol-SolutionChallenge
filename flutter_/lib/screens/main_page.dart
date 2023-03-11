@@ -1,12 +1,12 @@
 // 사용자 메인페이지
 import 'package:flutter/material.dart';
-import 'package:chicheck/screens/direction_text.dart';
-import 'package:chicheck/screens/logo_image.dart';
-import 'package:chicheck/widgets/bedge.dart';
-import 'package:chicheck/screens/tapbarView.dart';
-import 'package:chicheck/screens/name_text.dart';
-import 'package:chicheck/screens/title_text.dart';
-import 'package:chicheck/screens/segementedtab.dart';
+import 'package:flutter_/screens/direction_text.dart';
+import 'package:flutter_/screens/logo_image.dart';
+import 'package:flutter_/widgets/bedge.dart';
+import 'package:flutter_/screens/tapbarView.dart';
+import 'package:flutter_/screens/name_text.dart';
+import 'package:flutter_/screens/title_text.dart';
+import 'package:flutter_/screens/segementedtab.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
 /*
 동적 데이터 변수 가져오는 부분 코드 작성 필요함 
