@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_/screens/list_screen.dart';
-import 'package:flutter_/screens/modify_screen.dart';
+import 'package:flutter_/screens/chart_screen.dart';
 import 'package:flutter_/screens/detail_screen.dart';
-import 'package:flutter_/screens/tmp.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Color(0xff4285F4),
       ),
       */
-      home: Tmp()
+      home: DetailScreen()
     );
   }
 }

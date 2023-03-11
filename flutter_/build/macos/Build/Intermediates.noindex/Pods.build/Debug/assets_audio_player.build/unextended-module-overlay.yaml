@@ -1,0 +1,14 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/yunhyegyeong/Documents/2023-DomiSol-SolutionChallenge/flutter_/build/macos/Build/Products/Debug/assets_audio_player/assets_audio_player.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/yunhyegyeong/Documents/2023-DomiSol-SolutionChallenge/flutter_/build/macos/Build/Intermediates.noindex/Pods.build/Debug/assets_audio_player.build/unextended-module.modulemap",
+    }]
+  }]
+}

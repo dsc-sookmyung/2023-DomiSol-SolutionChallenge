@@ -42,6 +42,9 @@ dependencies:
 
   flutter_sound: ^8.1.9
   assets_audio_player: ^3.0.3+3
+  charts_flutter: ^0.11.0
+  syncfusion_flutter_charts: ^20.4.53
+  syncfusion_localizations: ^20.4.53
 
 dev_dependencies:
   flutter_test:
