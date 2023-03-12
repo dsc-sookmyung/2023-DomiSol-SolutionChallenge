@@ -6,13 +6,12 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class MemberLoginResponse {
+public class LoginResponse {
     private Long userId;
     private String accessToken;
     private String refreshToken;
 
-
-    public static MemberLoginResponse of(Member member, TokenResponse token) {
-        return new MemberLoginResponse(member.getId(), token.getAccessToken(), token.getRefreshToken());
+    public static LoginResponse of(Member member, TokenResponse token) {
+        return new LoginResponse(member.getId(), token.getAccessToken(), token.getRefreshToken());
     }
 }

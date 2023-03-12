@@ -17,18 +17,16 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String socialId;
+
     private String email;
 
     private String nickname;
-
-    private String socialId; // 소셜아이디로
 
     private String status;
 
     @Enumerated(EnumType.STRING)
     private Authority authority;
-
-
 
     @Builder
     public Member(String email, String nickname, String socialId, String status, Authority authority) {
