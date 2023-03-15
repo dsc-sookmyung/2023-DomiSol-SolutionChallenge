@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_/screens/chart_screen.dart';
-import 'package:flutter_/screens/detail_screen.dart';
+import 'package:flutter_/screens/home_page.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      /*
+      title: 'chicheck',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Color(0xff4285F4),
+        scaffoldBackgroundColor: Colors.white,
+        //dialogBackgroundColor: Colors.black,
+        primaryColor: Colors.white,
+        //cardColor: Colors.grey,
+        accentColor: Colors.white,
       ),
-      */
-      home: DetailScreen()
+      home: HomePage(),
     );
   }
 }
