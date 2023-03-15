@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_/screens/home_page.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -9,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'chicheck Login',
+      title: 'chicheck',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
