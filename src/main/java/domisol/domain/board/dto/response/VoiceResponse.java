@@ -1,4 +1,4 @@
-package domisol.domain.board.dto;
+package domisol.domain.board.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
