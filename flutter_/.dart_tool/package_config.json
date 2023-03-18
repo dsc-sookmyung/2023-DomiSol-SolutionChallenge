@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "animated_segmented_tab_control",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/animated_segmented_tab_control-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "assets_audio_player",
       "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/assets_audio_player-3.0.6",
       "packageUri": "lib/",
@@ -32,14 +38,20 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "chart_components",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/chart_components-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "charts_common",
-      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/charts_common-0.11.0",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/charts_common-0.12.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "charts_flutter",
-      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/charts_flutter-0.11.0",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/charts_flutter-0.12.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -60,6 +72,18 @@
       "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/crypto-3.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "cupertino_icons",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "cupertino_tabbar",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/cupertino_tabbar-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "fake_async",
@@ -84,6 +108,12 @@
       "rootUri": "file:///Library/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_advanced_segment",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/flutter_advanced_segment-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_lints",
@@ -122,10 +152,46 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_web_auth",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/flutter_web_auth-0.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "flutter_web_plugins",
       "rootUri": "file:///Library/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "google_sign_in",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/google_sign_in-5.4.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "google_sign_in_android",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "google_sign_in_ios",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.6.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "google_sign_in_platform_interface",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/google_sign_in_platform_interface-2.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "google_sign_in_web",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/google_sign_in_web-0.10.2+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "http",
@@ -260,6 +326,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "quiver",
+      "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/quiver-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "recase",
       "rootUri": "file:///Users/yunhyegyeong/.pub-cache/hosted/pub.dev/recase-4.1.0",
       "packageUri": "lib/",
@@ -374,7 +446,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-09T13:43:54.908833Z",
+  "generated": "2023-03-18T04:41:20.471620Z",
   "generator": "pub",
-  "generatorVersion": "2.19.1"
+  "generatorVersion": "2.19.4"
 }

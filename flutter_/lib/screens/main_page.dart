@@ -1,6 +1,7 @@
 // 사용자 메인페이지
 import 'package:flutter/material.dart';
 import 'package:flutter_/screens/direction_text.dart';
+import 'package:flutter_/screens/floating_action_btn.dart';
 import 'package:flutter_/screens/logo_image.dart';
 import 'package:flutter_/widgets/bedge.dart';
 import 'package:flutter_/screens/tapbarView.dart';
@@ -64,6 +65,8 @@ class _MainpageWidgetState extends State<MainpageWidget> {
           ),
           // ],
         ),
+        floatingActionButton: 
+              FLoatingActionBtn(context),
       ),
     );
   }
