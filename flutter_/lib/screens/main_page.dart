@@ -7,7 +7,9 @@ import 'package:flutter_/screens/tapbarView.dart';
 import 'package:flutter_/screens/name_text.dart';
 import 'package:flutter_/screens/title_text.dart';
 import 'package:flutter_/screens/segementedtab.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
+import 'package:flutter_/widgets/login_oauth.dart';
 /*
 동적 데이터 변수 가져오는 부분 코드 작성 필요함 
 -userName
@@ -15,6 +17,14 @@ import 'package:flutter_web_auth/flutter_web_auth.dart';
 */
 
 class MainPage extends StatelessWidget {
+
+  // final GoogleSignInAccount googleUser;
+
+  // MainPage({
+  //   Key key,
+  //   @required this.googleUser,
+  // }) : super(key : key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,14 +34,25 @@ class MainPage extends StatelessWidget {
 }
 
 class MainpageWidget extends StatefulWidget {
+
+  final GoogleSignInAccount googleUser;
+
+  MainpageWidget({
+    Key key,
+    @required this.googleUser,
+  }) : super(key : key);
+
   @override
   _MainpageWidgetState createState() => _MainpageWidgetState();
 }
 
 class _MainpageWidgetState extends State<MainpageWidget> {
-  String direction = '이번 주 욕설 사용량이 증가했어요'; // 통계 값에 따라 데이터를 전달 받을 string변수
-  String userName = '안재현'; // 로그인에 따라 사용자 이름 데이터를 전달 받을 string변수
 
+  
+
+  String direction = '이번 주 욕설 사용량이 증가했어요'; // 통계 값에 따라 데이터를 전달 받을 string변수
+  String userName = '' ;// 로그인에 따라 사용자 이름 데이터를 전달 받을 string변수
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -40,7 +61,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
         body: SafeArea(
           child: Stack(
             children: [
-              Positioned(top: 75, child: nameText(context, userName)),
+              Positioned(top: 75, child: Text(userName)),
               Positioned(
                 top: 108,
                 child: logoImage(context),

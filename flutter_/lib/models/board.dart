@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Board {
   final int id;
   final String location;
@@ -10,14 +12,14 @@ class Board {
   final int member_id;
 
   Board({
-    required this.id,
-    required this.location,
-    required this.start_time,
-    required this.end_time,
-    required this.memo,
-    required this.status,
-    required this.created_at,
-    required this.updated_at,
-    required this.member_id,
+    @required this.id,
+    @required this.location,
+    @required this.start_time,
+    @required this.end_time,
+    @required this.memo,
+    @required this.status,
+    @required this.created_at,
+    @required this.updated_at,
+    @required this.member_id,
   });
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_/screens/main_page.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
 
 class GoogleAuth extends StatefulWidget {
@@ -15,13 +16,15 @@ class _GoogleAuth extends State<GoogleAuth> {
 
   void authenticate() async {
     final url = 'http://localhost:9090/app/accounts/auth/google/login';
-    final callbackUrlScheme = 'com.chicheck.login';
+    final callbackUrlScheme = 'com.example.chicheck';
 
     try {
       final result = await FlutterWebAuth.authenticate(
           url: url, callbackUrlScheme: callbackUrlScheme);
       setState(() {
         print('sign complete');
+        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => MainPage(),));
+
       });
     } on PlatformException catch (e) {
       setState(() {
@@ -35,6 +38,7 @@ class _GoogleAuth extends State<GoogleAuth> {
     return GestureDetector(
         onTap: () {
           authenticate();
+
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

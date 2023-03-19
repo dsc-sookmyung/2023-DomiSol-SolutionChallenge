@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
-options: "beec19b3bbadae1a06311db5d19b0273686cf3fcf662902e6b5720fc69006eb1"
-build_start_time: [1677675990, 303809165]
-build_end_time: [1677675992, 68686008]
-inputs:
-  "/Users/yunhyegyeong/Documents/2023-DomiSol-SolutionChallenge/flutter_/macos/Flutter/GeneratedPluginRegistrant.swift": [1677675985, 978026866]
-  "/Users/yunhyegyeong/Documents/2023-DomiSol-SolutionChallenge/flutter_/macos/Runner/AppDelegate.swift": [1671079840, 0]
-  "/Users/yunhyegyeong/Documents/2023-DomiSol-SolutionChallenge/flutter_/macos/Runner/MainFlutterWindow.swift": [1671079840, 0]

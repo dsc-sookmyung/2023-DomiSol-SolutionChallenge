@@ -5,7 +5,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 // ignore: must_be_immutable
 class ChartScreen extends StatelessWidget {
-  ChartScreen({super.key});
+  ChartScreen({Key key});
 
   List<TmpChart> chartData = TmpChartRepository().getTmpChart();
 

@@ -24,7 +24,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
   }
   */
 class GenerateScreen extends StatelessWidget {
-  const GenerateScreen({super.key});
+  const GenerateScreen({Key key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class GenerateScreen extends StatelessWidget {
 
 class SettingBox extends StatelessWidget {
   final String txt;
-  const SettingBox({super.key, required this.txt});
+  const SettingBox({Key key, @required this.txt});
 
   @override
   Widget build(BuildContext context) {

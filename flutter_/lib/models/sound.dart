@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Sound {
   final int id;
   final String url;
@@ -8,12 +10,12 @@ class Sound {
   final int board_id;
 
   Sound({
-    required this.id,
-    required this.url,
-    required this.status,
-    required this.created_at,
-    required this.updated_at,
-    required this.member_id,
-    required this.board_id,
+    @required this.id,
+    @required this.url,
+    @required this.status,
+    @required this.created_at,
+    @required this.updated_at,
+    @required this.member_id,
+    @required this.board_id,
   });
 }

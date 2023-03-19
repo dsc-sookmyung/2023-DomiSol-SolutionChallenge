@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_/screens/generate_screen.dart';
 
 class Tmp extends StatelessWidget {
-  const Tmp({super.key});
+  const Tmp({Key key});
 
   @override
   Widget build(BuildContext context) {

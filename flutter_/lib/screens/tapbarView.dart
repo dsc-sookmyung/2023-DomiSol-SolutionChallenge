@@ -33,7 +33,7 @@ class ChartsDemo extends StatefulWidget {
 
 class ChartsDemoState extends State<ChartsDemo> {
   //
-  late List<charts.Series<dynamic, String>> seriesList;
+  List<charts.Series<dynamic, String>> seriesList;
 
   static List<charts.Series<Sales, String>> _createRandomData() {
     final random = Random();

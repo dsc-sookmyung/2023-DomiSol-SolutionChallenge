@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_/screens/record_screen.dart';
 
 class ModifyScreen extends StatelessWidget {
-  const ModifyScreen({super.key});
+  const ModifyScreen({Key key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class ModifyScreen extends StatelessWidget {
 
 class SettingBox extends StatelessWidget {
   final String txt;
-  const SettingBox({super.key, required this.txt});
+  const SettingBox({Key key, @required this.txt});
 
   @override
   Widget build(BuildContext context) {

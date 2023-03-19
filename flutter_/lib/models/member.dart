@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Member {
   final int id;
   final String authority;
@@ -11,15 +13,15 @@ class Member {
   final DateTime updated_at;
 
   Member({
-    required this.id,
-    required this.authority,
-    required this.email,
-    required this.nickname,
-    required this.profile_image,
-    required this.social_id,
-    required this.url,
-    required this.status,
-    required this.created_at,
-    required this.updated_at,
+    @required this.id,
+    @required this.authority,
+    @required this.email,
+    @required this.nickname,
+    @required this.profile_image,
+    @required this.social_id,
+    @required this.url,
+    @required this.status,
+    @required this.created_at,
+    @required this.updated_at,
   });
 }

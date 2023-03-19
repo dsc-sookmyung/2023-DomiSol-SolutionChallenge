@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Tag {
   final int id;
   final String status;
@@ -6,10 +8,10 @@ class Tag {
   final int member_id;
 
   Tag({
-    required this.id,
-    required this.status,
-    required this.created_at,
-    required this.updated_at,
-    required this.member_id,
+    @required this.id,
+    @required this.status,
+    @required this.created_at,
+    @required this.updated_at,
+    @required this.member_id,
   });
 }

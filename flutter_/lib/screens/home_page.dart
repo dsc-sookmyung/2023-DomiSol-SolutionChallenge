@@ -2,6 +2,7 @@ import 'package:flutter_/widgets/login_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_/screens/main_page.dart';
 import 'package:flutter_/widgets/login_btn.dart';
+import 'package:flutter_/widgets/login_oauth.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -45,42 +46,42 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.blue,
                   fontFamily: 'Signatra'), // 폰트정해지면 수정
             ),
-            //GoogleAuth(),
-            GestureDetector(
-                // onTap: () => print(
-                //     'Button tapped'), // 구글 회원 계정 확인되면 다음 메인 페이지로 전환 함수 구현 예정
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MainPage())),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Flexible(
-                      child: Container(
-                          margin: EdgeInsets.only(top: 200),
-                          width: 350,
-                          height: 50,
-                          decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: Colors.blue, width: 0.5),
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                alignment: Alignment.centerLeft,
-                                image:
-                                    AssetImage('assets/images/google_logo.png'),
-                              )),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Google로 로그인',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w200),
-                            ),
-                          )),
-                    )
-                  ],
-                ))
+            GoogleAuth2(),
+            // GestureDetector(
+            //     // onTap: () => print(
+            //     //     'Button tapped'), // 구글 회원 계정 확인되면 다음 메인 페이지로 전환 함수 구현 예정
+            //     onTap: () => Navigator.push(context,
+            //         MaterialPageRoute(builder: (context) => MainPage())),
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: <Widget>[
+            //         Flexible(
+            //           child: Container(
+            //               margin: EdgeInsets.only(top: 200),
+            //               width: 350,
+            //               height: 50,
+            //               decoration: BoxDecoration(
+            //                   border:
+            //                       Border.all(color: Colors.blue, width: 0.5),
+            //                   borderRadius: BorderRadius.circular(10),
+            //                   image: DecorationImage(
+            //                     alignment: Alignment.centerLeft,
+            //                     image:
+            //                         AssetImage('assets/images/google_logo.png'),
+            //                   )),
+            //               child: Align(
+            //                 alignment: Alignment.center,
+            //                 child: Text(
+            //                   'Google로 로그인',
+            //                   style: TextStyle(
+            //                       color: Colors.blue,
+            //                       fontSize: 20,
+            //                       fontWeight: FontWeight.w200),
+            //                 ),
+            //               )),
+            //         )
+            //       ],
+            //     ))
           ],
         ),
       ),

@@ -8,7 +8,7 @@
 	<string>Chicheck</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>com.chicheck.login</key>
+	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
@@ -47,5 +47,19 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <!-- facebook login -->
+        <string>fbAPP-ID</string>
+
+        <!-- google login -->
+        <string>com.googleusercontent.apps.904280118275-ospfqtmsskhp851lfi35vg48mqjmmjaj</string>
+      </array>
+      </dict>
+    </array>
 </dict>
 </plist>
