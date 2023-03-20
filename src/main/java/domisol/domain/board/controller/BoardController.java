@@ -2,6 +2,7 @@ package domisol.domain.board.controller;
 
 import domisol.domain.board.dto.request.BoardRequest;
 import domisol.domain.board.dto.request.WordRequest;
+import domisol.domain.board.dto.response.BoardDetailResponse;
 import domisol.domain.board.dto.response.BoardResponse;
 import domisol.domain.board.service.BoardService;
 import domisol.global.BaseResponse;
@@ -36,6 +37,13 @@ public class BoardController {
     @DeleteMapping("/{id}")
     public BaseResponse<Long> delete(@PathVariable Long id) {
         return new BaseResponse<>(boardService.delete(id));
+    }
+
+    /* 측정 데이터 모두 조회하기 */
+    @ResponseBody
+    @GetMapping("")
+    public BaseResponse<List<BoardDetailResponse>> findAll() {
+        return new BaseResponse<>(boardService.findAll());
     }
 
     /* 전달 받은 데이터 저장 */

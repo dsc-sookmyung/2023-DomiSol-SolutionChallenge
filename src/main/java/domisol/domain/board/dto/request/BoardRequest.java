@@ -6,14 +6,16 @@ import lombok.Getter;
 
 @Getter
 public class BoardRequest {
+    private String title;
     private String location;
-    private String description;
+    private String memo;
 
     @Builder
     public Board toEntity() {
         return Board.builder()
+                .title(title)
                 .location(location)
-                .description(description)
+                .memo(memo)
                 .build();
     }
 }

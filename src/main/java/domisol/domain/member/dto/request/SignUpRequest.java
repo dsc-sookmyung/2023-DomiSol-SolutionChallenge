@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static domisol.domain.member.entity.Authority.ROLE_USER;
+import static domisol.global.common.Status.ACTIVE;
 
 @Getter
 @NoArgsConstructor
@@ -23,7 +24,7 @@ public class SignUpRequest {
                 .email(email)
                 .nickname(nickname)
                 .socialId(passwordEncoder.encode(socialId))
-                .status("ACTIVE")
+                .status(ACTIVE)
                 .authority(ROLE_USER)
                 .build();
     }

@@ -19,13 +19,15 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String title;
+
     private String location;
 
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
 
-    private String description;
+    private String memo;
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -33,23 +35,27 @@ public class Board {
     @ManyToOne
     private Member member;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+   public void set(String title, String location, String memo) {
+       this.title = title;
+       this.location = location;
+       this.memo = memo;
+   }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
     @Builder
-    public Board(String location, LocalDateTime startTime, String description) {
+    public Board(String title, String location, String memo, LocalDateTime startTime) {
+        this.title = title;
         this.location = location;
+        this.memo = memo;
         this.startTime = startTime;
-        this.description = description;
     }
 
 }
