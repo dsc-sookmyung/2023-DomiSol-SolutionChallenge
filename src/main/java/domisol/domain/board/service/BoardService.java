@@ -10,10 +10,15 @@ import domisol.domain.board.entity.Board;
 import domisol.domain.board.entity.BoardRepository;
 import domisol.domain.board.entity.Word;
 import domisol.domain.board.entity.WordRepository;
+import domisol.global.BaseException;
+import domisol.global.StatusCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static domisol.global.StatusCode.BOARD_NOT_FOUND;
+import static domisol.global.common.Status.DELETE;
 
 @RequiredArgsConstructor
 @Service
@@ -22,9 +27,23 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final WordRepository wordRepository;
 
-    public Object crateBoard(BoardRequest request) {
+    public BoardResponse create(BoardRequest request) {
         return BoardResponse.of(boardRepository.save(request.toEntity()));
     }
+
+    public BoardResponse update(Long id, BoardRequest request) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
+        board.setDescription(request.getDescription());
+        board.setLocation(request.getLocation());
+        return BoardResponse.of(board);
+    }
+
+    public Long delete(Long id) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
+        board.setStatus(DELETE);
+        return board.getId();
+    }
+
 
     public void getResult(List<WordRequest> request) {
         try {

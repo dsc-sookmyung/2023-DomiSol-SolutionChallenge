@@ -1,6 +1,7 @@
 package domisol.domain.board.entity;
 
 import domisol.domain.member.entity.Member;
+import domisol.global.common.Status;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +27,23 @@ public class Board {
 
     private String description;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @ManyToOne
     private Member member;
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     @Builder
     public Board(String location, LocalDateTime startTime, String description) {

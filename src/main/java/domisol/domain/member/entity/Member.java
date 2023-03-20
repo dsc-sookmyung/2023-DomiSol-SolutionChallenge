@@ -1,5 +1,6 @@
 package domisol.domain.member.entity;
 
+import domisol.global.common.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,13 +24,14 @@ public class Member {
 
     private String nickname;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
     @Builder
-    public Member(String email, String nickname, String socialId, String status, Authority authority) {
+    public Member(String email, String nickname, String socialId, Status status, Authority authority) {
         this.email = email;
         this.nickname = nickname;
         this.socialId = socialId;

@@ -17,11 +17,28 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    /* 측정 생성하기 */
+    @ResponseBody
     @PostMapping("")
-    public BaseResponse<BoardResponse> createBoard(@RequestBody BoardRequest request) {
-        return new BaseResponse(boardService.crateBoard(request));
+    public BaseResponse<BoardResponse> create(@RequestBody BoardRequest request) {
+        return new BaseResponse(boardService.create(request));
     }
 
+    /* 측정 수정하기 */
+    @ResponseBody
+    @PatchMapping("/{id}")
+    public BaseResponse<BoardResponse> update(@PathVariable Long id, @RequestBody BoardRequest request) {
+        return new BaseResponse<>(boardService.update(id, request));
+    }
+
+    /* 측정 삭제하기 */
+    @ResponseBody
+    @DeleteMapping("/{id}")
+    public BaseResponse<Long> delete(@PathVariable Long id) {
+        return new BaseResponse<>(boardService.delete(id));
+    }
+
+    /* 전달 받은 데이터 저장 */
     @GetMapping("/test")
     public void getResult(@RequestBody List<WordRequest> request) {
         boardService.getResult(request);
