@@ -15,6 +15,12 @@ public class MemberController {
     private final MemberService memberService;
 
     @ResponseBody
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
+
+    @ResponseBody
     @GetMapping("/login")
     public BaseResponse<LoginResponse> login(@RequestBody LoginRequest request) {
         return new BaseResponse<>(memberService.login(request));
