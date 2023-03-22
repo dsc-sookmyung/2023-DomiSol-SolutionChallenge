@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -14,8 +15,8 @@ import java.time.LocalDateTime;
 
 
 @EntityListeners(AuditingEntityListener.class)
-@Getter
 @RequiredArgsConstructor
+@Getter
 @Entity
 public class Board {
 
@@ -30,6 +31,7 @@ public class Board {
     @CreatedDate
     private LocalDateTime startTime;
 
+    @LastModifiedDate
     private LocalDateTime endTime;
 
     private String memo;
@@ -40,12 +42,15 @@ public class Board {
     @ManyToOne
     private Member member;
 
-   public void set(String title, String location, String memo) {
-       this.title = title;
-       this.location = location;
-       this.memo = memo;
-   }
+    public void set(String title, String location, String memo) {
+        this.title = title;
+        this.location = location;
+        this.memo = memo;
+    }
 
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
 
     public void setStatus(Status status) {
         this.status = status;
@@ -56,10 +61,11 @@ public class Board {
     }
 
     @Builder
-    public Board(String title, String location, String memo, LocalDateTime startTime) {
+    public Board(String title, String location, String memo, Status status, LocalDateTime startTime) {
         this.title = title;
         this.location = location;
         this.memo = memo;
+        this.status = status;
         this.startTime = startTime;
     }
 

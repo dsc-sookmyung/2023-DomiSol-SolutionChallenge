@@ -18,11 +18,14 @@ import domisol.global.BaseException;
 import domisol.global.util.MemberFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static domisol.global.StatusCode.BOARD_NOT_FOUND;
 import static domisol.global.StatusCode.MEMBER_NOT_FOUND;
+import static domisol.global.common.Status.ACTIVE;
 import static domisol.global.common.Status.DELETE;
 
 @RequiredArgsConstructor
@@ -40,14 +43,23 @@ public class BoardService {
         return BoardResponse.of(board);
     }
 
+    @Transactional
+    public BoardDetailResponse finish(Long id) {
+        Board board = boardRepository.findByIdAndStatus(id, ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
+        board.setEndTime(LocalDateTime.now());
+        return BoardDetailResponse.of(board);
+    }
+
+    @Transactional
     public BoardResponse update(Long id, BoardRequest request) {
-        Board board = boardRepository.findById(id).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
+        Board board = boardRepository.findByIdAndStatus(id, ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
         board.set(request.getTitle(), request.getLocation(), request.getMemo());
         return BoardResponse.of(board);
     }
 
+    @Transactional
     public BoardCompactResponse delete(Long id) {
-        Board board = boardRepository.findById(id).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
+        Board board = boardRepository.findByIdAndStatus(id, ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
         board.setStatus(DELETE);
         return BoardCompactResponse.of(board);
     }
@@ -61,7 +73,7 @@ public class BoardService {
     public void getResult(List<WordRequest> request) {
         try {
             List<Word> words = serializeRequest(request);
-            Board board = boardRepository.findById(request.get(0).getBoardId()).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
+            Board board = boardRepository.findByIdAndStatus(request.get(0).getBoardId(), ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
             for (Word v : words) {
                 Word newWord = new Word(v.getWord(), v.getFrequency());
                 newWord.setBoard(board);

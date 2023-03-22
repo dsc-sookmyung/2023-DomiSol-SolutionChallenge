@@ -26,6 +26,13 @@ public class BoardController {
         return new BaseResponse(boardService.create(request));
     }
 
+    /* 측정 종료하기 - 종료시간 업데이트 */
+    @ResponseBody
+    @PatchMapping("/{id}/finish")
+    public BaseResponse<BoardDetailResponse> finish(@PathVariable Long id) {
+        return new BaseResponse(boardService.finish(id));
+    }
+
     /* 측정 수정하기 */
     @ResponseBody
     @PatchMapping("/{id}")
