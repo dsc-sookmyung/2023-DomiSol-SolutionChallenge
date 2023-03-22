@@ -2,12 +2,11 @@ package domisol.domain.board.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import domisol.domain.board.dto.request.BoardRequest;
 import domisol.domain.board.dto.request.WordRequest;
-import domisol.domain.board.dto.response.BoardCompactResponse;
-import domisol.domain.board.dto.response.BoardDetailResponse;
-import domisol.domain.board.dto.response.BoardResponse;
+import domisol.domain.board.dto.response.*;
 import domisol.domain.board.entity.Board;
 import domisol.domain.board.entity.BoardRepository;
 import domisol.domain.board.entity.Word;
@@ -21,7 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static domisol.global.StatusCode.BOARD_NOT_FOUND;
 import static domisol.global.StatusCode.MEMBER_NOT_FOUND;
@@ -71,25 +72,42 @@ public class BoardService {
         return BoardDetailResponse.of(boards);
     }
 
-    public void getResult(List<WordRequest> request) {
+    @Transactional
+    public void saveResult(List<WordRequest> request) {
         try {
-            List<Word> words = serializeRequest(request);
             Board board = boardRepository.findByIdAndStatus(request.get(0).getBoardId(), ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
-            for (Word v : words) {
-                Word newWord = new Word(v.getWord(), v.getFrequency());
-                newWord.setBoard(board);
-                wordRepository.save(newWord);
+            List<Word> words = serializeRequest(request, board);
+            for (Word w : words) {
+                wordRepository.save(w);
             }
         } catch (JsonProcessingException e) {
             e.getMessage();
         }
     }
 
-    private List<Word> serializeRequest(List<WordRequest> request) throws JsonProcessingException {
+    private List<Word> serializeRequest(List<WordRequest> request, Board board) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         String serializedResponse = objectMapper.writeValueAsString(request);
-        List<Word> word = objectMapper.readValue(serializedResponse, new TypeReference<>(){});
-        return word;
+        JsonNode jsonNode = objectMapper.readTree(serializedResponse);
+        List<Word> words = new ArrayList<>();
+        if (jsonNode.isArray()) {
+            for (JsonNode node : jsonNode) {
+                Long id = node.get("boardId").asLong();
+                String word = node.get("word").asText();
+                int frequency = node.get("frequency").asInt();
+                Word newWord = new Word(word, frequency);
+                newWord.setBoard(board);
+                words.add(newWord);
+            }
+        }
+        return words;
     }
 
+    @Transactional
+    public WordResponse getResult(Long id) {
+        Board board = boardRepository.findByIdAndStatus(id, ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
+        List<Word> words = wordRepository.findByBoardId(id);
+        List<WordDetailResponse> wordDetail = WordDetailResponse.of(words);
+        return WordResponse.of(board, wordDetail);
+    }
 }

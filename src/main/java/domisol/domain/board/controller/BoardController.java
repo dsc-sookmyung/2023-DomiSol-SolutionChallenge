@@ -5,6 +5,7 @@ import domisol.domain.board.dto.request.WordRequest;
 import domisol.domain.board.dto.response.BoardCompactResponse;
 import domisol.domain.board.dto.response.BoardDetailResponse;
 import domisol.domain.board.dto.response.BoardResponse;
+import domisol.domain.board.dto.response.WordResponse;
 import domisol.domain.board.service.BoardService;
 import domisol.global.BaseResponse;
 import lombok.RequiredArgsConstructor;
@@ -56,8 +57,14 @@ public class BoardController {
 
     /* 전달 받은 데이터 저장 */
     @GetMapping("/test")
-    public void getResult(@RequestBody List<WordRequest> request) {
-        boardService.getResult(request);
+    public void saveResult(@RequestBody List<WordRequest> request) {
+        boardService.saveResult(request);
+    }
+
+    /* 결과 조회하기 */
+    @GetMapping("/{id}/voice")
+    public BaseResponse<WordResponse> getResult(@PathVariable Long id) {
+        return new BaseResponse<>(boardService.getResult(id));
     }
 
 }

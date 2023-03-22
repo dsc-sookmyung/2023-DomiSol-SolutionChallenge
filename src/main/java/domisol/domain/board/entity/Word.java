@@ -1,12 +1,15 @@
 package domisol.domain.board.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @RequiredArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Word {
 
@@ -26,6 +29,7 @@ public class Word {
         this.board = board;
     }
 
+    @Builder
     public Word(String word, int frequency) {
         this.word = word;
         this.frequency = frequency;
