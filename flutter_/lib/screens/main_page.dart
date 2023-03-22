@@ -8,7 +8,7 @@ import 'package:flutter_/screens/name_text.dart';
 import 'package:flutter_/screens/title_text.dart';
 import 'package:flutter_/screens/segementedtab.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:flutter_/screens/floating_action_btn.dart';
 
 /*
 동적 데이터 변수 가져오는 부분 코드 작성 필요함 
@@ -60,6 +60,8 @@ class MainPage extends StatelessWidget {
           ),
           // ],
         ),
+        floatingActionButton: 
+              FLoatingActionBtn(context),
       ),
     );
   }

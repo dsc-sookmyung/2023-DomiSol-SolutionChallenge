@@ -1,4 +1,4 @@
 enum LoginPlatform {
   google,
-  naver,
+  naver, none,
 }

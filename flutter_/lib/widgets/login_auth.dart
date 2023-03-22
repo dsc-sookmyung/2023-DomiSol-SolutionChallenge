@@ -5,31 +5,57 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:platform/platform.dart';
 import 'package:flutter_/screens/main_page.dart';
+import 'package:flutter_/api/login_controller.dart';
+import 'package:flutter_/api/goolge_login_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class GoogleAuth2 extends StatefulWidget {
   @override
   _GoogleAuth2 createState() => _GoogleAuth2();
 }
 
 class _GoogleAuth2 extends State<GoogleAuth2> {
+  LoginPlatform _loginPlatform = LoginPlatform.none;
+  //GoogleSignInAccount? googleUser = null;
+  LoginController loginController = LoginController();
 
   @override
   void initState() {
     super.initState();
   }
   
-  Future <void> signInWithGoogle() async {
+  void signInWithGoogle() async {
+    
+    final prefs = await SharedPreferences.getInstance();
+    try {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-  
-    if(googleUser != null) {
-    print('name = ${googleUser.displayName}');
-    
-    
-    setState((){
-      LoginPlatform _loginPlatform = LoginPlatform.google;
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context) => MainPage(googleUser:googleUser),));
-
-    });
+    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    final String? accessToken = googleAuth.accessToken;
+    if (googleUser != null) { // null check 추가
+      googleLoginResponse? response = await loginController.googleLogin(googleUser);
+      
+      prefs.setString('accessToken', accessToken!);
+      setState(() {
+        _loginPlatform = LoginPlatform.google;
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context) => MainPage(googleUser:googleUser),));
+      });
     }
+  } catch (e) {
+    print(e);
+    }
+
+    // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  
+  //   if(googleUser != null) {
+  //   print('name = ${googleUser.displayName}');
+    
+    
+  //   setState((){
+  //     LoginPlatform _loginPlatform = LoginPlatform.google;
+  //     Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context) => MainPage(googleUser:googleUser),));
+
+  //   });
+  //   }
   }
   
   @override
