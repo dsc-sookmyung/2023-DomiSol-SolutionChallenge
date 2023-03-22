@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import domisol.domain.board.dto.request.BoardRequest;
 import domisol.domain.board.dto.request.WordRequest;
+import domisol.domain.board.dto.response.BoardCompactResponse;
 import domisol.domain.board.dto.response.BoardDetailResponse;
 import domisol.domain.board.dto.response.BoardResponse;
 import domisol.domain.board.entity.Board;
@@ -45,10 +46,10 @@ public class BoardService {
         return BoardResponse.of(board);
     }
 
-    public Long delete(Long id) {
+    public BoardCompactResponse delete(Long id) {
         Board board = boardRepository.findById(id).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
         board.setStatus(DELETE);
-        return board.getId();
+        return BoardCompactResponse.of(board);
     }
 
     public List<BoardDetailResponse> findAll() {

@@ -2,6 +2,7 @@ package domisol.domain.board.controller;
 
 import domisol.domain.board.dto.request.BoardRequest;
 import domisol.domain.board.dto.request.WordRequest;
+import domisol.domain.board.dto.response.BoardCompactResponse;
 import domisol.domain.board.dto.response.BoardDetailResponse;
 import domisol.domain.board.dto.response.BoardResponse;
 import domisol.domain.board.service.BoardService;
@@ -35,7 +36,7 @@ public class BoardController {
     /* 측정 삭제하기 */
     @ResponseBody
     @DeleteMapping("/{id}")
-    public BaseResponse<Long> delete(@PathVariable Long id) {
+    public BaseResponse<BoardCompactResponse> delete(@PathVariable Long id) {
         return new BaseResponse<>(boardService.delete(id));
     }
 
