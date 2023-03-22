@@ -8,5 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
-    private String code;
+    private String email;
+    private String socialId;
+    private String nickname;
+    private String profileImage;
 }

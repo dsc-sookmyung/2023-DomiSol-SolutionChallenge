@@ -67,4 +67,6 @@ public class BoardController {
         return new BaseResponse<>(boardService.getResult(id));
     }
 
+    /* 주간 통계 조회하기 */
+
 }

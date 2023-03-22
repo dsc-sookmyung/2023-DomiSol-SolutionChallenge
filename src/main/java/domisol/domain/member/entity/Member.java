@@ -24,6 +24,8 @@ public class Member {
 
     private String nickname;
 
+    private String profileImage;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -31,10 +33,11 @@ public class Member {
     private Authority authority;
 
     @Builder
-    public Member(String email, String nickname, String socialId, Status status, Authority authority) {
+    public Member(String email, String nickname, String socialId, String profileImage, Status status, Authority authority) {
         this.email = email;
         this.nickname = nickname;
         this.socialId = socialId;
+        this.profileImage = profileImage;
         this.status = status;
         this.authority = authority;
     }

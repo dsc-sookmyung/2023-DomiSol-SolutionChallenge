@@ -17,6 +17,7 @@ public class SignUpRequest {
     private String socialId;
     private String email;
     private String nickname;
+    private String profileImage;
 
     @Builder
     public Member toEntity(PasswordEncoder passwordEncoder) {
@@ -24,6 +25,7 @@ public class SignUpRequest {
                 .email(email)
                 .nickname(nickname)
                 .socialId(passwordEncoder.encode(socialId))
+                .profileImage(profileImage)
                 .status(ACTIVE)
                 .authority(ROLE_USER)
                 .build();

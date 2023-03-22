@@ -12,7 +12,6 @@ public class BoardRequest {
     private String title;
     private String location;
     private String memo;
-    private Status status;
 
     @Builder
     public Board toEntity() {

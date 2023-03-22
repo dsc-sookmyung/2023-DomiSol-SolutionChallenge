@@ -32,29 +32,22 @@ public class MemberService {
     private final JwtTokenProvider jwtTokenProvider;
 
     public LoginResponse login(LoginRequest request) {
-        MemberInfoResponse memberInfo = getMemberInfoFromGoogle(request);
-        Member member = findMemberAndSignUpIfNotExists(memberInfo);
-        TokenResponse tokenResponse = createMemberToken(memberInfo);
+        Member member = findMemberAndSignUpIfNotExists(request);
+        TokenResponse tokenResponse = createMemberToken(request);
         return LoginResponse.of(member, tokenResponse);
     }
 
-    private MemberInfoResponse getMemberInfoFromGoogle(LoginRequest request) {
-        String accessToken = google.getAccessToken(request.getCode());
-        MemberInfoResponse userInfo = google.getUserInfo(accessToken);
-        return userInfo;
-    }
-
-    private Member findMemberAndSignUpIfNotExists(MemberInfoResponse memberInfo) {
+    private Member findMemberAndSignUpIfNotExists(LoginRequest request) {
         Member member;
-        if (!memberRepository.existsByEmail(memberInfo.getEmail())) {
-            member = signup(new SignUpRequest(memberInfo.getSocialId(), memberInfo.getEmail(), memberInfo.getNickname()));
+        if (!memberRepository.existsByEmail(request.getEmail())) {
+            member = signup(new SignUpRequest(request.getSocialId(), request.getEmail(), request.getNickname(), request.getProfileImage()));
         } else {
-            member = memberRepository.findByEmail(memberInfo.getEmail()).orElseThrow(() -> new BaseException(EMAIL_NOT_FOUND));
+            member = memberRepository.findByEmail(request.getEmail()).orElseThrow(() -> new BaseException(EMAIL_NOT_FOUND));
         }
         return member;
     }
 
-    private TokenResponse createMemberToken(MemberInfoResponse memberInfo) {
+    private TokenResponse createMemberToken(LoginRequest memberInfo) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(memberInfo.getEmail(), memberInfo.getSocialId());
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         TokenResponse tokenResponse = jwtTokenProvider.createToken(authentication);
