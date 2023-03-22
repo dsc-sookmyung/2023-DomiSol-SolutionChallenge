@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long> {
-    List<Board> findByMemberId(Long memberId);
+    Optional<List<Board>> findByMemberIdAndStatus(Long memberId, Status status);
     Optional<Board> findByIdAndStatus(Long id, Status status);
 }

@@ -37,6 +37,7 @@ public class BoardService {
     private final WordRepository wordRepository;
     private final MemberFacade memberFacade;
 
+    @Transactional
     public BoardResponse create(BoardRequest request) {
         Board board = boardRepository.save(request.toEntity());
         board.setMember(memberFacade.getCurrentMember());
@@ -66,7 +67,7 @@ public class BoardService {
 
     public List<BoardDetailResponse> findAll() {
         Member member = memberRepository.findById(memberFacade.getCurrentMember().getId()).orElseThrow(() -> new BaseException(MEMBER_NOT_FOUND));
-        List<Board> boards = boardRepository.findByMemberId(member.getId());
+        List<Board> boards = boardRepository.findByMemberIdAndStatus(member.getId(), ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
         return BoardDetailResponse.of(boards);
     }
 
