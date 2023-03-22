@@ -5,11 +5,15 @@ import domisol.global.common.Status;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @RequiredArgsConstructor
 @Entity
@@ -23,6 +27,7 @@ public class Board {
 
     private String location;
 
+    @CreatedDate
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
