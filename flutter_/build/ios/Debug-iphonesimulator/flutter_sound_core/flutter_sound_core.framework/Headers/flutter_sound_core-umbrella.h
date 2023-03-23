@@ -15,9 +15,6 @@
 #import "FlautoPlayerEngine.h"
 #import "FlautoRecorder.h"
 #import "FlautoRecorderEngine.h"
-#import "FlautoSession.h"
-#import "FlautoTrack.h"
-#import "FlautoTrackPlayer.h"
 
 FOUNDATION_EXPORT double flutter_sound_coreVersionNumber;
 FOUNDATION_EXPORT const unsigned char flutter_sound_coreVersionString[];

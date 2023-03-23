@@ -35,31 +35,28 @@
 @interface FlutterSoundPlayer : Session<FlautoPlayerCallback>
 {
         FlautoPlayer* flautoPlayer;
+        FlutterSoundPlayerManager* flutterSoundPlayerManager;
+
 }
 
 
 - (void)reset: (FlutterMethodCall*)call result: (FlutterResult)result;
 - (int)getStatus;
 - (FlutterSoundPlayerManager*) getPlugin;
-- (Session*) init: (FlutterMethodCall*)call;
+//- (void)setPlayerManager: (FlutterSoundPlayerManager*)pm;
+- (Session*) init: (FlutterMethodCall*)call playerManager: (FlutterSoundPlayerManager*)pm;
 - (void)isDecoderSupported:(t_CODEC)codec result: (FlutterResult)result;
 - (void)pausePlayer:(FlutterResult)result;
 - (void)resumePlayer:(FlutterResult)result;
 - (void)startPlayer:(FlutterMethodCall*)path result: (FlutterResult)result;
 - (void)startPlayerFromMic:(FlutterMethodCall*)path result: (FlutterResult)result;
 - (void)getProgress:(FlutterMethodCall*)call result: (FlutterResult)result;
-- (void)startPlayerFromTrack:(FlutterMethodCall*)call result: (FlutterResult)result;
 - (void)seekToPlayer:(FlutterMethodCall*) time result: (FlutterResult)result;
 - (void)setSubscriptionDuration:(FlutterMethodCall*)call result: (FlutterResult)result;
 - (void)setVolume:(double) volume fadeDuration:(NSTimeInterval)duration result: (FlutterResult)result;
 - (void)setSpeed:(double) speed  result: (FlutterResult)result;
-- (void)setCategory: (FlutterMethodCall*)call result:(FlutterResult)result;
-- (void)setActive: (FlutterMethodCall*)call result:(FlutterResult)result;
 - (void)openPlayer: (FlutterMethodCall*)call result: (FlutterResult)result;
 - (void)closePlayer: (FlutterMethodCall*)call result: (FlutterResult)result;
-- (void)setAudioFocus: (FlutterMethodCall*)call result: (FlutterResult)result;
-- (void)setUIProgressBar:(FlutterMethodCall*)call result: (FlutterResult)result;
-- (void)nowPlaying:(FlutterMethodCall*)call result: (FlutterResult)result;
 - (void)getPlayerState:(FlutterMethodCall*)call result: (FlutterResult)result;
 - (void)stopPlayer:(FlutterMethodCall*)call  result:(FlutterResult)result;
 - (void)feed:(FlutterMethodCall*)call result: (FlutterResult)result;

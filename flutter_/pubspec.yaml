@@ -41,9 +41,8 @@ dependencies:
   http: ^0.13.4
   intl: ^0.17.0
 
-  flutter_sound: ^8.1.9
+  flutter_sound: ^9.2.13
   assets_audio_player: ^3.0.3+3
-  #charts_flutter: ^0.11.0
   syncfusion_flutter_charts: ^20.4.53
   syncfusion_localizations: ^20.4.53
   cupertino_icons: ^1.0.2
@@ -53,6 +52,12 @@ dependencies:
   charts_flutter: ^0.12.0
   chart_components: ^1.0.1
   flutter_web_auth: ^0.5.0
+  permission_handler: ^8.1.2
+  audio_session: ^0.1.13
+  path_provider: ^2.0.13
+  json_annotation: ^4.6.0
+  dio: ^5.0.3
+
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +69,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.2.0
+  json_serializable: ^6.6.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

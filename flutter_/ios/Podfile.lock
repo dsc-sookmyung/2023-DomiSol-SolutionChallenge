@@ -9,12 +9,13 @@ PODS:
     - Flutter
   - assets_audio_player_web (0.0.1):
     - Flutter
-  - Flutter (1.0.0)
-  - flutter_sound (8.5.0):
+  - audio_session (0.0.1):
     - Flutter
-    - flutter_sound_core (= 8.5.0)
-    - mobile-ffmpeg-audio (= 4.4.LTS)
-  - flutter_sound_core (8.5.0)
+  - Flutter (1.0.0)
+  - flutter_sound (9.2.13):
+    - Flutter
+    - flutter_sound_core (= 9.2.13)
+  - flutter_sound_core (9.2.13)
   - flutter_web_auth (0.5.0):
     - Flutter
   - google_sign_in_ios (0.0.1):
@@ -28,19 +29,22 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.3.0)
-  - mobile-ffmpeg-audio (4.4.LTS)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - "permission_handler (5.1.0+2)":
+    - Flutter
 
 DEPENDENCIES:
   - assets_audio_player (from `.symlinks/plugins/assets_audio_player/ios`)
   - assets_audio_player_web (from `.symlinks/plugins/assets_audio_player_web/ios`)
+  - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - Flutter (from `Flutter`)
   - flutter_sound (from `.symlinks/plugins/flutter_sound/ios`)
   - flutter_web_auth (from `.symlinks/plugins/flutter_web_auth/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
 
 SPEC REPOS:
   trunk:
@@ -49,13 +53,14 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
-    - mobile-ffmpeg-audio
 
 EXTERNAL SOURCES:
   assets_audio_player:
     :path: ".symlinks/plugins/assets_audio_player/ios"
   assets_audio_player_web:
     :path: ".symlinks/plugins/assets_audio_player_web/ios"
+  audio_session:
+    :path: ".symlinks/plugins/audio_session/ios"
   Flutter:
     :path: Flutter
   flutter_sound:
@@ -66,21 +71,24 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_sign_in_ios/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
 
 SPEC CHECKSUMS:
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   assets_audio_player: edee322b9cb625571b830b35872ead1a295fd917
   assets_audio_player_web: 19826380c44375761aa0b9053665c1e3fbc3b86b
+  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_sound: ba7daf658dea78e9f18b79657338bfc222489f4f
-  flutter_sound_core: d9396f10752a0df9aa3197f4c431d62d934918cc
+  flutter_sound: c60effa2a350fb977885f0db2fbc4c1ad5160900
+  flutter_sound_core: 26c10e5832e76aaacfae252d8925232281c486ae
   flutter_web_auth: c25208760459cec375a3c39f6a8759165ca0fa4d
   google_sign_in_ios: 1256ff9d941db546373826966720b0c24804bcdd
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
-  mobile-ffmpeg-audio: 1e0a053f8a6de57114e50ff48b3a85ff1c60f902
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
 
 PODFILE CHECKSUM: 02e6b95df202110137e40c4b9c5061eba861dbf4
 

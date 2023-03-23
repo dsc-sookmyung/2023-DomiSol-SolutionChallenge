@@ -45,6 +45,18 @@
 
         AVAudioInputNode* inputNode = [engine inputNode];
         AVAudioFormat* inputFormat = [inputNode outputFormatForBus: 0];
+        double sRate = [inputFormat sampleRate];
+        // -AVAudioChannelCount channelCount = [inputFormat channelCount];
+        AVAudioChannelLayout* layout = [inputFormat channelLayout];
+        // -CMAudioFormatDescriptionRef formatDescription = [inputFormat formatDescription];
+        
+        if (sRate == 0 || layout == nil)
+        {
+                [NSException raise:@"Invalid Audio Session state" format:@"The Audio Session is not in a correct state to do Recording."];
+        }
+
+        
+        
         NSNumber* nbChannels = audioSettings [AVNumberOfChannelsKey];
         NSNumber* sampleRate = audioSettings [AVSampleRateKey];
         //sampleRate = [NSNumber numberWithInt: 44000];
@@ -79,15 +91,14 @@
                         return buffer;
                 };
                 NSError* error;
-                BOOL r = [converter convertToBuffer: convertedBuffer error: &error withInputFromBlock: inputBlock];
-                if (!r)
+                [converter convertToBuffer: convertedBuffer error: &error withInputFromBlock: inputBlock];
+                if (error != nil)
                 {
-                        NSString* s =  error.localizedDescription;
-                        
-                        s = error.localizedFailureReason;
-                        [flautoRecorder logDebug: s];
+                        NSString *errorMessage = [NSString stringWithFormat: @"[converter convertToBuffer:] error: %@", error.localizedDescription];
+                        [flautoRecorder logDebug: errorMessage];
                         return;
                 }
+
                 int n = [convertedBuffer frameLength];
                 int16_t *const  bb = [convertedBuffer int16ChannelData][0];
                 NSData* b = [[NSData alloc] initWithBytes: bb length: n * 2 ];

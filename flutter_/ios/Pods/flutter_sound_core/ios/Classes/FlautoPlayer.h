@@ -26,8 +26,6 @@
 #import "Flauto.h"
 #import <AVFoundation/AVFoundation.h>
 #import "FlautoPlayerEngine.h"
-#import "FlautoSession.h"
-#import "FlautoTrack.h"
 
 
 
@@ -51,7 +49,7 @@
 @end
 
 
-@interface FlautoPlayer  : FlautoSession <AVAudioPlayerDelegate>
+@interface FlautoPlayer  : NSObject <AVAudioPlayerDelegate>
 {
         NSObject<FlautoPlayerEngineInterface>* m_playerEngine;
         NSObject<FlautoPlayerCallback>* m_callBack;
@@ -59,18 +57,11 @@
 
 - (FlautoPlayer*)init: (NSObject<FlautoPlayerCallback>*) callback;
            
+- (void)setVoiceProcessing: (bool) enabled;
+- (bool)isVoiceProcessingEnabled;
 - (t_PLAYER_STATE)getPlayerState;
 - (bool)isDecoderSupported: (t_CODEC)codec ;
-
-- (bool)initializeFlautoPlayerFocus:
-                (t_AUDIO_FOCUS)focus
-                category: (t_SESSION_CATEGORY)category
-                mode: (t_SESSION_MODE)mode
-                audioFlags: (int)audioFlags
-                audioDevice: (t_AUDIO_DEVICE)audioDevice;
-                
 - (void)releaseFlautoPlayer;
-
 - (bool)startPlayerCodec: (t_CODEC)codec
         fromURI: (NSString*)path
         fromDataBuffer: (NSData*)dataBuffer
@@ -78,9 +69,6 @@
         sampleRate: (long)sampleRate
         ;
 - (bool)startPlayerFromMicSampleRate: (long)sampleRate nbChannels: (int)nbChannels;
-- (bool)startPlayerFromTrack: (FlautoTrack*)track canPause: (bool)canPause canSkipForward: (bool)canSkipForward canSkipBackward: (bool)canSkipBackward
-        progress: (NSNumber*)progress duration: (NSNumber*)duration removeUIWhenStopped: (bool)removeUIWhenStopped defaultPauseResume: (bool)defaultPauseResume;
-
 - (void)stopPlayer;
 - (bool)pausePlayer;
 - (bool)resumePlayer;
@@ -88,9 +76,6 @@
 - (void)setSubscriptionDuration: (long)call ;
 - (void)setVolume: (double)volume fadeDuration: (NSTimeInterval) fadeDuration;
 - (void)setSpeed: (double)speed ;
-- (bool)setCategory: (NSString*)categ mode:(NSString*)mode options:(int)options ;
-- (bool)setActive:(BOOL)enabled ;
-- (void)setUIProgressBar: (NSNumber*)pos duration: (NSNumber*)duration;
 - (NSDictionary*)getProgress ;
 - (int)feed: (NSData*)data;
 - (void)needSomeFood: (int) ln;
@@ -99,8 +84,6 @@
 - (void)stopTimer;
 - (long)getPosition;
 - (long)getDuration;
-- (void)nowPlaying: (FlautoTrack*)track canPause: (bool)canPause canSkipForward: (bool)canSkipForward canSkipBackward: (bool)canSkipBackward
-                defaultPauseResume: (bool)defaultPauseResume progress: (NSNumber*)progress duration: (NSNumber*)duration;
 - (void)logDebug: (NSString*)msg;
 
 

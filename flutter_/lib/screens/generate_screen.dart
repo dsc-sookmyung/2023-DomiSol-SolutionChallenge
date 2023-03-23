@@ -1,30 +1,44 @@
-// ignore_for_file: unnecessary_string_interpolations
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_/models/board.dart';
 import 'package:flutter_/screens/record_screen.dart';
 
-/*
 class GenerateScreen extends StatefulWidget {
   @override
-  _GenerateScreenState createState() {
-    return new _GenerateScreenState();
-  }
+  _GenerateScreenState createState() => new _GenerateScreenState();
+}
 
 class _GenerateScreenState extends State<GenerateScreen> {
+  late List<Board> boards;
+  late String title;
+  late String location;
+  late String memo;
 
-  List<Board> board = [];
-  bool isLoading = true;
+  Future getServerDataWithDio() async {
+    BaseOptions options = BaseOptions(
+      baseUrl: 'http://34.22.70.110:9090',
+    );
+    Dio dio = Dio(options);
+    try {
+      Response resp = await dio.post(
+        "/api/boards",
+        queryParameters: {
+          "title": "",
+          "location": "",
+          "memo": "memo",
+        },
+      );
 
-  @override
-  void initState(){
-    super.initState();
-    setState(() {
-      isLoading = false;
-    });
+      boards = resp.data.map<Board>((parsedJson) {
+        return Board.fromJson(parsedJson);
+      }).toList();
+    } catch (e) {
+      print("Exception: $e");
+    }
   }
-  */
-class GenerateScreen extends StatelessWidget {
-  const GenerateScreen({super.key});
+
+//class GenerateScreen extends StatelessWidget {
+//  const GenerateScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +63,7 @@ class GenerateScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => RecordScreen()));
+                  DateTime start_time = DateTime.now();
                 },
                 child: const Text('완료')),
           ]),
@@ -70,14 +85,15 @@ class SettingBox extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(
-              color: const Color(0xff4285F4), style: BorderStyle.solid, width: 2)),
+              color: const Color(0xff4285F4),
+              style: BorderStyle.solid,
+              width: 2)),
       //child: Text(title),
       child: TextField(
         keyboardType: TextInputType.multiline,
         maxLines: 14,
         minLines: 1,
-        onChanged: (value) {
-        },
+        onChanged: (value) {},
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: '$txt',

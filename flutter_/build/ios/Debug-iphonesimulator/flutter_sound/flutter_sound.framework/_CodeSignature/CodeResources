@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/FlutterSound.h</key>
 		<data>
-		9vhbbjxf13SRwyb40Mf/Aaaakd0=
+		o/Bl6z6uGAFEo5+RJZYUWYllAU0=
 		</data>
 		<key>Headers/FlutterSoundFFmpeg.h</key>
 		<data>
@@ -14,31 +14,31 @@
 		</data>
 		<key>Headers/FlutterSoundManager.h</key>
 		<data>
-		S78U8cu6E0k0P2Ig/upsESdfEIM=
+		tRACfS6dUn1u2mqc4g2SPHV7iSg=
 		</data>
 		<key>Headers/FlutterSoundPlayer.h</key>
 		<data>
-		zRf/U6dRfCW6J4ZwGrEOsRu66SI=
+		BxyofL+4JqwHP34/zCEKZ6SsNnM=
 		</data>
 		<key>Headers/FlutterSoundPlayerManager.h</key>
 		<data>
-		dSFkwL0rFSYIf1hlOZxU3DFI2TM=
+		hJDPB7QNAWQg/AzKdtCruwQvDd0=
 		</data>
 		<key>Headers/FlutterSoundRecorder.h</key>
 		<data>
-		5ZO+cA3QI5ejaJEnzv8ImXq4Ujc=
+		BFojtlJWO/MnZv04xQSWh7Hkp5I=
 		</data>
 		<key>Headers/FlutterSoundRecorderManager.h</key>
 		<data>
-		kgD3CxwBCfXVsgBMCB/wjd2IWVE=
+		b/BNBxUcXWeoeBSOsi9ChwNaQHI=
 		</data>
 		<key>Headers/flutter_sound-umbrella.h</key>
 		<data>
-		EmI9wJ2A7nmIJp3+Yz9mBIjmakY=
+		jrnb/U8Fr8TscmczfeaCn+7E2Gk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ccBTkTjpeDtUmAm9qaTm+22BehE=
+		z18Tq/9vgDLxVs/uc95Sodb+nIk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,11 +51,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9vhbbjxf13SRwyb40Mf/Aaaakd0=
+			o/Bl6z6uGAFEo5+RJZYUWYllAU0=
 			</data>
 			<key>hash2</key>
 			<data>
-			9/LvSUbPNifpwrcBUeinDIFQEDjRZjXrHDqX2oHpet0=
+			gHHb4Ehibjs0NoZiATYt3eo5wwZPnhtLvqBqJO7eDsQ=
 			</data>
 		</dict>
 		<key>Headers/FlutterSoundFFmpeg.h</key>
@@ -73,66 +73,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			S78U8cu6E0k0P2Ig/upsESdfEIM=
+			tRACfS6dUn1u2mqc4g2SPHV7iSg=
 			</data>
 			<key>hash2</key>
 			<data>
-			4cgoTJNhPD1gQNEP2be2plPeI29qp9aGjNGluAusvOA=
+			RIR9fJAcBH5fD1PK3MGOA97n7B8VL6WD3nrrLRxqCaA=
 			</data>
 		</dict>
 		<key>Headers/FlutterSoundPlayer.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zRf/U6dRfCW6J4ZwGrEOsRu66SI=
+			BxyofL+4JqwHP34/zCEKZ6SsNnM=
 			</data>
 			<key>hash2</key>
 			<data>
-			0S1uhV4chCXHOYrdbxgdB4+qMRpAr9p0h43/O7pDpUI=
+			EUm1SjpdnnqvnE45T/c97H94nh/PykPDApPrnlviDLI=
 			</data>
 		</dict>
 		<key>Headers/FlutterSoundPlayerManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dSFkwL0rFSYIf1hlOZxU3DFI2TM=
+			hJDPB7QNAWQg/AzKdtCruwQvDd0=
 			</data>
 			<key>hash2</key>
 			<data>
-			C9/CIhQ+SsLuPLNRl0pKEQDCAw/hAvEYKAVkVLwlPiE=
+			cQqIq4jS3XN9WM8WQvc4FYxYIfWdHMocIHzF1E8meO0=
 			</data>
 		</dict>
 		<key>Headers/FlutterSoundRecorder.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5ZO+cA3QI5ejaJEnzv8ImXq4Ujc=
+			BFojtlJWO/MnZv04xQSWh7Hkp5I=
 			</data>
 			<key>hash2</key>
 			<data>
-			BYHhGbATPGKPCjB063f0wjg1yR/ZiZP4sqGetCMqaAY=
+			Z4WT8QFMlqsRylQ1ZooP+tDkGG0iHnN0Mz2oDdOs398=
 			</data>
 		</dict>
 		<key>Headers/FlutterSoundRecorderManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kgD3CxwBCfXVsgBMCB/wjd2IWVE=
+			b/BNBxUcXWeoeBSOsi9ChwNaQHI=
 			</data>
 			<key>hash2</key>
 			<data>
-			+/H+jipFYdjoXl69uto5e2m3otamgVKGwLZyV7vWrq0=
+			3UZMBic+ogQ/79AoEgfoXC3XsQkcOOtVCiAqEiJKIW4=
 			</data>
 		</dict>
 		<key>Headers/flutter_sound-umbrella.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EmI9wJ2A7nmIJp3+Yz9mBIjmakY=
+			jrnb/U8Fr8TscmczfeaCn+7E2Gk=
 			</data>
 			<key>hash2</key>
 			<data>
-			3G+Ji+2d7/MWF9WQSsafeJ79ioq3UTAa+dwVl9+asJM=
+			w48b6ycpTb1sdwHWpXxw1ytQDnKI99p/4APekqruYZU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

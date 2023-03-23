@@ -10,7 +10,8 @@ import 'package:flutter_/screens/chart_screen.dart';
 List<TmpChart> chartData = TmpChartRepository().getTmpChart();
 
 class DetailScreen extends StatelessWidget {
-  final Board board = BoardRepository().getBoards().first;
+  //final Board board = BoardRepository().getBoards().first;
+  late Board board;
   List<Color> palette = const <Color>[
     Color.fromRGBO(75, 135, 185, 1),
     Color.fromRGBO(192, 108, 132, 1),
@@ -89,7 +90,7 @@ class DetailScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
-                        Text('${board.created_at}',
+                        Text('${board.start_time}',
                             style: const TextStyle(
                               fontSize: 17,
                             )),

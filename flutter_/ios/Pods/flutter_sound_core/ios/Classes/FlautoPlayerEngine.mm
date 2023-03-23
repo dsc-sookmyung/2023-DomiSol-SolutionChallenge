@@ -57,11 +57,6 @@
                 NSError* error = [[NSError alloc] init];
                 [self setAudioPlayer:  [[AVAudioPlayer alloc] initWithData: dataBuffer error: &error]];
                 [self getAudioPlayer].delegate = flautoPlayer;
-               
-                //[self getAudioPlayer].enableRate = true ; // Probably not always !!!!
-                
-                 //bool b = [[self getAudioPlayer] play];
-                //return b;
        }
 
        -(void)  startPlayerFromURL: (NSURL*) url codec: (t_CODEC)codec channels: (int)numChannels sampleRate: (long)sampleRate
@@ -69,10 +64,6 @@
        {
                 [self setAudioPlayer: [[AVAudioPlayer alloc] initWithContentsOfURL: url error: nil] ];
                 [self getAudioPlayer].delegate = flautoPlayer;
-                //[self getAudioPlayer].enableRate = true ; // Probably not always !!!!
-
-                //bool b = [ [self getAudioPlayer] play];
-                //return b;
         }
 
 
@@ -166,6 +157,7 @@
         AVAudioFormat* playerFormat;
         AVAudioFormat* outputFormat;
         AVAudioOutputNode* outputNode;
+        AVAudioConverter* converter;
         CFTimeInterval mStartPauseTime ; // The time when playback was paused
 	CFTimeInterval systemTime ; //The time when  StartPlayer() ;
         double mPauseTime ; // The number of seconds during the total Pause mode
@@ -180,6 +172,20 @@
                 waitingBlock = nil;
                 engine = [[AVAudioEngine alloc] init];
                 outputNode = [engine outputNode];
+           
+                if (@available(iOS 13.0, *)) {
+                    if ([flutterSoundPlayer isVoiceProcessingEnabled]) {
+                        NSError* err;
+                        if (![outputNode setVoiceProcessingEnabled:YES error:&err]) {
+                           [flutterSoundPlayer logDebug:[NSString stringWithFormat:@"error enabling voiceProcessing => %@", err]];
+                        } else {
+                            [flutterSoundPlayer logDebug: @"VoiceProcessing enabled"];
+                        }
+                    }
+                } else {
+                   [flutterSoundPlayer logDebug: @"WARNING! VoiceProcessing is only available on iOS13+"];
+                }
+               
                 outputFormat = [outputNode inputFormatForBus: 0];
                 playerNode = [[AVAudioPlayerNode alloc] init];
 
@@ -241,6 +247,11 @@
                          }
                         [engine stop];
                         engine = nil;
+                    
+                        if (converter != nil)
+                        {
+                            converter = nil; // ARC will dealloc the converter (I hope ;-) )
+                        }
                 }
        }
 
@@ -310,7 +321,11 @@
                         AVAudioPCMBuffer* thePCMOutputBuffer = [[AVAudioPCMBuffer alloc] initWithPCMFormat: outputFormat frameCapacity: frameLength];
                         thePCMOutputBuffer.frameLength = 0;
 
-                        AVAudioConverter* converter = [[AVAudioConverter alloc]initFromFormat: playerFormat toFormat: outputFormat];
+                        if (converter == nil) 
+                        {
+                                converter = [[AVAudioConverter alloc]initFromFormat: playerFormat toFormat: outputFormat];
+                        }
+
                         NSError* error;
                         [converter convertToBuffer: thePCMOutputBuffer error: &error withInputFromBlock: inputBlock];
                          // if (r == AVAudioConverterOutputStatus_HaveData || true)
@@ -385,12 +400,9 @@
                 engine = [[AVAudioEngine alloc] init];
                 
                 AVAudioInputNode* inputNode = [engine inputNode];
-                //AVAudioFormat* inputFormat = [inputNode outputFormatForBus: 0];
-
                 outputNode = [engine outputNode];
                 outputFormat = [outputNode inputFormatForBus: 0];
                 
-
                 [engine connect: inputNode to: outputNode format: outputFormat];
                 return [super init];
        }
@@ -426,7 +438,6 @@
                 mPauseTime = 0.0; // Total number of seconds in pause mode
 		mStartPauseTime = -1; // Not in paused mode
 		systemTime = CACurrentMediaTime(); // The time when started
-                //previousTS = CACurrentMediaTime() * 1000;
                 ready2 = 0;
        }
 
@@ -436,19 +447,8 @@
 
                 if (engine != nil)
                 {
-                        //if (playerNode != nil)
-                        {
-                                //[playerNode stop];
-                                // Does not work !!! // [engine detachNode:  playerNode];
-                                //playerNode = nil;
-                         }
-                        [engine stop];
+                         [engine stop];
                         engine = nil;
-                }
-                //if (previousTS != 0)
-                {
-                        //dateCumul += CACurrentMediaTime() * 1000 - previousTS;
-                        //previousTS = 0;
                 }
        }
 
@@ -464,26 +464,11 @@
 
        -(bool)  resume
        {
-		//if (mStartPauseTime >= 0)
-			//mPauseTime += CACurrentMediaTime() - mStartPauseTime;
-		//mStartPauseTime = -1;
-
-                //[engine startAndReturnError: nil];
-		//[playerNode play];
-                //previousTS = CACurrentMediaTime() * 1000;
                 return false;
        }
 
        -(bool)  pause
        {
-		//mStartPauseTime = CACurrentMediaTime();
-		//[playerNode pause];
-                //[engine pause];
-                //if (previousTS != 0)
-                {
-                        //dateCumul += CACurrentMediaTime() * 1000 - previousTS;
-                        //previousTS = 0;
-                }
                 return false;
        }
 
@@ -497,10 +482,6 @@
        {
                 if (engine == nil)
                         return PLAYER_IS_STOPPED;
-                //if (mStartPauseTime > 0)
-                        //return PLAYER_IS_PAUSED;
-                //if ( [playerNode isPlaying])
-                        //return PLAYER_IS_PLAYING;
                 return PLAYER_IS_PLAYING; // ??? Not sure !!!
        }
 

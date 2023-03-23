@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/Flauto.h</key>
 		<data>
-		flYxrlpWQxORFisy3EyYLUXjnY4=
+		M8HlAFmPB2r1v3ACmTTLNf1DcL0=
 		</data>
 		<key>Headers/FlautoPlayer.h</key>
 		<data>
-		LYTKaN+p1DhgUpf05JY0bkAu8fQ=
+		hVLijSems2UjTlYwJkjgXiEyeWA=
 		</data>
 		<key>Headers/FlautoPlayerEngine.h</key>
 		<data>
@@ -18,11 +18,11 @@
 		</data>
 		<key>Headers/FlautoRecorder.h</key>
 		<data>
-		Gq+g4s19B7cCvoUkGS/KBUOGjJI=
+		EO/hVmUK4k7dOchyf3PRT7YMl6Q=
 		</data>
 		<key>Headers/FlautoRecorderEngine.h</key>
 		<data>
-		FuSRANNxgZIXFm2tFnADykCUkqI=
+		Iij9dwhpTFlT+4rmt3Z+cCr3aZc=
 		</data>
 		<key>Headers/FlautoSession.h</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Headers/flutter_sound_core-umbrella.h</key>
 		<data>
-		4oOiFiZALycelgPuNkzo0VdoRFo=
+		AYs5yy7fdFBL0fE3TUpl3PrWfvA=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Dux1DWHtluB3wrILfsHSjlV+KgY=
+		Bl+vBLMvIO5WEav42a7Ntks22gg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -55,22 +55,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			flYxrlpWQxORFisy3EyYLUXjnY4=
+			M8HlAFmPB2r1v3ACmTTLNf1DcL0=
 			</data>
 			<key>hash2</key>
 			<data>
-			AkxX619X3A9GdEpcjCUQ31411CadyYE0jkJKDNY0U6s=
+			KQgYnlB1lNf/Ka8o6083m9nxkADr4MUpHYcBOGXu3Dw=
 			</data>
 		</dict>
 		<key>Headers/FlautoPlayer.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LYTKaN+p1DhgUpf05JY0bkAu8fQ=
+			hVLijSems2UjTlYwJkjgXiEyeWA=
 			</data>
 			<key>hash2</key>
 			<data>
-			EETLqj7+BEu1m4BRLl4/LihcPIQl64mtMDjwiiNAbz0=
+			pxD/hVTXI1YFJd3DfIHYEhtsvUJwg8zgSIy6QUf+H8o=
 			</data>
 		</dict>
 		<key>Headers/FlautoPlayerEngine.h</key>
@@ -88,22 +88,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Gq+g4s19B7cCvoUkGS/KBUOGjJI=
+			EO/hVmUK4k7dOchyf3PRT7YMl6Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			YX6zPWn/uiw7XN4u99HdGpg/OyiI41ikIMRVUL5GaW4=
+			neqfTc5hB3+kvRGlgKJbG4nl9U1ETuXyDRuUr/B3N18=
 			</data>
 		</dict>
 		<key>Headers/FlautoRecorderEngine.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FuSRANNxgZIXFm2tFnADykCUkqI=
+			Iij9dwhpTFlT+4rmt3Z+cCr3aZc=
 			</data>
 			<key>hash2</key>
 			<data>
-			0+vSnXF0sB+KITT1gB6z3DcTrLlwyMB9kYr9lEHYQaQ=
+			QzEqiqQObvEFQZKGt4iTPJbo+IZ4+oEpi/TrNJBI4S8=
 			</data>
 		</dict>
 		<key>Headers/FlautoSession.h</key>
@@ -143,11 +143,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4oOiFiZALycelgPuNkzo0VdoRFo=
+			AYs5yy7fdFBL0fE3TUpl3PrWfvA=
 			</data>
 			<key>hash2</key>
 			<data>
-			wpjuMBTNW56ZzZpK+iP+59d7Y0QkROmgON/IVn+/lZ8=
+			zWEOQDl/j77nWG76rBm3IRV+azwTxCE2/ZxLDQeflaU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

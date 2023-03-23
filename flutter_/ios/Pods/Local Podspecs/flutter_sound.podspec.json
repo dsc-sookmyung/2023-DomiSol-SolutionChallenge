@@ -1,14 +1,14 @@
 {
   "name": "flutter_sound",
-  "version": "8.5.0",
+  "version": "9.2.13",
   "summary": "Flutter plugin that relates to sound like audio and recorder.",
   "description": "Flutter plugin that relates to sound like audio and recorder.",
-  "homepage": "https://github.com/dooboolab/flutter_sound/flutter_sound",
+  "homepage": "https://taudio-waa.thetatau.xyz/index.html",
   "license": {
     "file": "../LICENSE"
   },
   "authors": {
-    "Dooboolab": "dooboolab@gmail.com"
+    "Canardoux": "canardoux.xyz"
   },
   "source": {
     "path": "."
@@ -20,10 +20,7 @@
 
     ],
     "flutter_sound_core": [
-      "8.5.0"
-    ],
-    "mobile-ffmpeg-audio": [
-      "4.4.LTS"
+      "9.2.13"
     ]
   },
   "platforms": {
