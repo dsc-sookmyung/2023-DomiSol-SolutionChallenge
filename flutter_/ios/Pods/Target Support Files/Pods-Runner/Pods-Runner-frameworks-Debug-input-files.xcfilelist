@@ -8,3 +8,4 @@ ${BUILT_PRODUCTS_DIR}/assets_audio_player_web/assets_audio_player_web.framework
 ${BUILT_PRODUCTS_DIR}/flutter_sound_core/flutter_sound_core.framework
 ${BUILT_PRODUCTS_DIR}/flutter_web_auth/flutter_web_auth.framework
 ${BUILT_PRODUCTS_DIR}/path_provider_foundation/path_provider_foundation.framework
+${BUILT_PRODUCTS_DIR}/shared_preferences_foundation/shared_preferences_foundation.framework

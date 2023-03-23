@@ -49,5 +49,19 @@
 	<false/>
 	<key>com.chicheck.login</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+	<key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <!-- facebook login -->
+        <string>fbAPP-ID</string>
+
+        <!-- google login -->
+        <string>com.googleusercontent.apps.904280118275-ospfqtmsskhp851lfi35vg48mqjmmjaj</string>
+      </array>
+      </dict>
+    </array>
 </dict>
 </plist>
