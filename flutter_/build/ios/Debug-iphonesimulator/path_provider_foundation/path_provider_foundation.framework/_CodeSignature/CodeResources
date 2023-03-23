@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MYIsplLX82QmVVnQX3zD/YjR+IM=
+		PAB6r4nKJ5p6z+KFlyW/g1Qwwiw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		0uden9/VEvFcigp8kHv93OTgCnY=
+		dnALR76X6DoMXAmGalT5/jj6HZg=
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		PqondXCYJewutce+z4S4gosfl6c=
+		Kfu1YLWwrDxucoNbF5Atc+YqrIc=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -87,7 +87,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yBkD0jsRONXB9wx+l6iHw1CKsGZ8OTPvTb5oa1bnV9A=
+			pTV3y5GtS3Tt1BjtJGNofm3n18YnGHT2wAclYtjPonQ=
 			</data>
 		</dict>
 		<key>Modules/path_provider_foundation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -129,7 +129,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NYyvuPCVKL2rDfWSynPDtMr01Mlxc2bYdWmE2b2cKng=
+			Y6KWYEu5hK8kTB5fr9dyWWV5YD1AtEUo57idHWuZKuQ=
 			</data>
 		</dict>
 	</dict>
