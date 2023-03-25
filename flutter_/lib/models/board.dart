@@ -1,23 +1,35 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+
 class Board {
-  final int id;
-  final String location;
-  final DateTime start_time;
-  final DateTime end_time;
-  final String memo;
-  final String status;
-  final DateTime created_at;
-  final DateTime updated_at;
-  final int member_id;
+  int boardId;
+  String title;
+  String location;
+  DateTime startTime;
+  DateTime endTime;
 
   Board({
-    required this.id,
+    required this.boardId,
+    required this.title,
     required this.location,
-    required this.start_time,
-    required this.end_time,
-    required this.memo,
-    required this.status,
-    required this.created_at,
-    required this.updated_at,
-    required this.member_id,
+    required this.startTime,
+    required this.endTime,
   });
+
+  factory Board.fromJson(Map<String, dynamic> json) => Board(
+        boardId: json['boardId'],
+        title: json['title'],
+        location: json['location'],
+        startTime: DateTime.parse(json['start_time']),
+        endTime: DateTime.parse(json['end_time']),
+      );
+
+  Map<String, dynamic> toJson() => {
+        'boardId': boardId,
+        'title': title,
+        'location': location,
+        'start_time': startTime!.toIso8601String(),
+        'end_time': endTime!.toIso8601String(),
+      };
 }

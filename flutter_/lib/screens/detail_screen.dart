@@ -1,16 +1,21 @@
 import 'dart:math';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_/models/board.dart';
 import 'package:flutter_/models/tmp_chart.dart';
 import 'package:flutter_/repositories/board_repository.dart';
 import 'package:flutter_/repositories/tmp_chart_repository.dart';
 import 'package:flutter_/screens/chart_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 List<TmpChart> chartData = TmpChartRepository().getTmpChart();
 
-class DetailScreen extends StatelessWidget {
-  final Board board = BoardRepository().getBoards().first;
+class DetailPage extends StatefulWidget {
+  final int index;
+
+  DetailPage(this.index);
+
   List<Color> palette = const <Color>[
     Color.fromRGBO(75, 135, 185, 1),
     Color.fromRGBO(192, 108, 132, 1),
@@ -25,7 +30,15 @@ class DetailScreen extends StatelessWidget {
   ];
 
   @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  final storage = const FlutterSecureStorage();
+
+  @override
   Widget build(BuildContext context) {
+    final int index = widget.index;
     return Scaffold(
         appBar: AppBar(),
         body: Center(
@@ -33,13 +46,13 @@ class DetailScreen extends StatelessWidget {
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
             margin: const EdgeInsets.only(bottom: 30),
-            child: Text(
-              '${board.id} 결과',
+            /*child: Text(
+              '${board.title} 결과',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
-            ),
+            ),*/
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 30),
@@ -73,10 +86,10 @@ class DetailScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
-                        Text(board.location,
+                        /*Text(board.location,
                             style: const TextStyle(
                               fontSize: 17,
-                            )),
+                            )),*/
                       ]),
                 ),
                 Padding(
@@ -89,10 +102,10 @@ class DetailScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
-                        Text('${board.created_at}',
+                        /*Text('${board.startTime}',
                             style: const TextStyle(
                               fontSize: 17,
-                            )),
+                            )),*/
                       ]),
                 ),
                 Padding(
@@ -117,10 +130,10 @@ class DetailScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
-                        Text(board.memo,
+                        /*Text(board.memo,
                             style: const TextStyle(
                               fontSize: 17,
-                            )),
+                            )),*/
                       ]),
                 )
               ],
@@ -161,6 +174,36 @@ class DetailScreen extends StatelessWidget {
             ),
           ),
         ])));
+  }
+
+  void _getVoice(BuildContext context, id) async {
+    final accessToken = await storage.read(key: 'accessToken');
+
+    Dio dio = Dio();
+    dio.options.baseUrl = 'http://34.22.70.110:9090';
+    dio.options.connectTimeout = const Duration(seconds: 5000);
+    dio.options.receiveTimeout = const Duration(seconds: 5000);
+    //print(accessToken);
+    // POST 요청 보내기
+    try {
+      Response response = await dio.get(
+        '/api/boards/$id/voice',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $accessToken',
+          },
+        ),
+      );
+      print(response.data['result'].runtimeType);
+      //List<dynamic> boardList = response.data['result'];
+
+      //setState(() {
+      //  boards = boardList;
+      //});
+
+    } catch (e) {
+      print('GET Error $e');
+    }
   }
 }
 

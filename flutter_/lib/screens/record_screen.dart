@@ -30,7 +30,7 @@ class RecordScreen extends StatelessWidget {
                 child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => ListScreen(
+                      builder: (BuildContext context) => ListPage(
                           )));
                 },
                 child: const Text('녹음 완료')),

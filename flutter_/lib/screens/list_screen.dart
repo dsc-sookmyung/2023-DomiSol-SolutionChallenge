@@ -1,12 +1,26 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_/models/board.dart';
-import 'package:flutter_/repositories/board_repository.dart';
 import 'package:flutter_/screens/modify_screen.dart';
 import 'package:flutter_/screens/detail_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class ListScreen extends StatelessWidget {
+class ListPage extends StatefulWidget {
   //final List<TmpRecord> records = RecordRepository().getRecords();
-  final List<Board> boards = BoardRepository().getBoards();
+  //final List<Board> boards = BoardRepository().getBoards();
+  const ListPage({super.key});
+
+  @override
+  _ListPageState createState() => _ListPageState();
+}
+
+class _ListPageState extends State<ListPage> {
+  late List<dynamic> boards = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getBoards(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +40,7 @@ class ListScreen extends StatelessWidget {
               onTap: () {
                 debugPrint('The record has been tapped');
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => DetailScreen()));
+                    builder: (BuildContext context) => DetailPage(index)));
               },
               child: Row(children: [
                 Expanded(
@@ -44,20 +58,20 @@ class ListScreen extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    '${boards[index].id}',
+                                    '${boards[index]['title']}',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
                                     ),
                                   ),
                                   Text(
-                                    boards[index].location,
+                                    boards[index]['location'],
                                     style: const TextStyle(
                                       fontSize: 16,
                                     ),
                                   ),
                                   Text(
-                                    '${boards[index].created_at}',
+                                    '${boards[index]['startTime']}',
                                     style: const TextStyle(
                                       fontSize: 16,
                                     ),
@@ -105,7 +119,7 @@ class ListScreen extends StatelessWidget {
                                                     MaterialPageRoute(
                                                         builder: (BuildContext
                                                                 context) =>
-                                                            ModifyScreen()));
+                                                            ModifyPage(index)));
                                               },
                                               child: const Text(
                                                 '수정하기',
@@ -124,7 +138,12 @@ class ListScreen extends StatelessWidget {
                                               onTap: () {
                                                 debugPrint(
                                                     'The delete has been tapped');
-                                                Navigator.pop(context);
+                                                _deleteBoards(context, index);
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            ListPage()));
                                               },
                                               child: const Text(
                                                 '삭제하기',
@@ -156,5 +175,58 @@ class ListScreen extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _getBoards(BuildContext context) async {
+    const storage = FlutterSecureStorage();
+    final accessToken = await storage.read(key: 'accessToken');
+
+    Dio dio = Dio();
+    dio.options.baseUrl = 'http://34.22.70.110:9090';
+    dio.options.connectTimeout = const Duration(seconds: 5000);
+    dio.options.receiveTimeout = const Duration(seconds: 5000);
+    //print(accessToken);
+    // POST 요청 보내기
+    try {
+      Response response = await dio.get(
+        '/api/boards',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $accessToken',
+          },
+        ),
+      );
+      List<dynamic> boardList = response.data['result'];
+
+      setState(() {
+        boards = boardList;
+      });
+    } catch (e) {
+      print('GET Error $e');
+    }
+  }
+
+  void _deleteBoards(BuildContext context, id) async {
+    const storage = FlutterSecureStorage();
+    final accessToken = await storage.read(key: 'accessToken');
+
+    Dio dio = Dio();
+    dio.options.baseUrl = 'http://34.22.70.110:9090';
+    dio.options.connectTimeout = const Duration(seconds: 5000);
+    dio.options.receiveTimeout = const Duration(seconds: 5000);
+    //print(accessToken);
+    // POST 요청 보내기
+    try {
+      Response response = await dio.delete(
+        '/api/boards/$id',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $accessToken',
+          },
+        ),
+      );
+    } catch (e) {
+      print('DELETE Error $e');
+    }
   }
 }
