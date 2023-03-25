@@ -1,67 +1,163 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_/screens/record_screen.dart';
+import 'package:flutter_/models/postBoard.dart';
+import 'package:flutter_/screens/list_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class ModifyScreen extends StatelessWidget {
-  const ModifyScreen({super.key});
+class ModifyPage extends StatefulWidget {
+  final int index;
+
+  ModifyPage(this.index);
+
+  @override
+  _ModifyPageState createState() => _ModifyPageState();
+}
+
+class _ModifyPageState extends State<ModifyPage> {
+  final storage = const FlutterSecureStorage();
+
+  final _titleController = TextEditingController();
+  final _locationController = TextEditingController();
+  final _memoController = TextEditingController();
+
+  void dispose() {
+    _titleController.dispose();
+    _locationController.dispose();
+    _memoController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+  final int index = widget.index;
     return Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 30),
-              child: const Text(
-                '기록 수정',
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                '녹음 정보 수정하기',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
             ),
-            const SettingBox(txt: '제목'),
-            const SettingBox(txt: '위치'),
-            const SettingBox(txt: '메모'),
+            const SizedBox(height: 30),
+            _buildInputBox('제목', height: 60, controller: _titleController),
+            const SizedBox(height: 16),
+            _buildInputBox('위치', height: 60, controller: _locationController),
+            const SizedBox(height: 16),
+            _buildInputBox('메모', height: 100, controller: _memoController),
+            const SizedBox(height: 16),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => RecordScreen(
-                          )));
-                },
-                child: const Text('완료')),
-          ]),
-        ));
-  }
-}
-
-class SettingBox extends StatelessWidget {
-  final String txt;
-  const SettingBox({super.key, required this.txt});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: 350,
-        height: txt == '메모' ? 300 : 60,
-        margin: const EdgeInsets.all(13.0),
-        padding: const EdgeInsets.only(left: 15, top: 3),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            border: Border.all(
-                color: const Color(0xff4285F4), style: BorderStyle.solid, width: 2)),
-        //child: Text(title),
-        child: TextField(
-            keyboardType: TextInputType.multiline,
-            maxLines: 14,
-            minLines: 1,
-            onChanged: (value) {
-            },
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: txt,
+              onPressed: () {
+                _patchBoard(context, index);
+              },
+              child: const Text('완료'),
             ),
-          ),
-        );
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputBox(String hintText,
+      {double? height, TextEditingController? controller}) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(13, 6, 13, 6),
+      padding: const EdgeInsets.only(top: 5),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: const Color(0xff4285F4),
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      height: height,
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+          border: InputBorder.none,
+        ),
+        maxLines: null, // Allows the text field to expand infinitely
+      ),
+    );
+  }
+
+  void _getVoice(BuildContext context, id) async {
+    final accessToken = await storage.read(key: 'accessToken');
+
+    final postBoard = PostBoard(
+      title: _titleController.text,
+      location: _locationController.text,
+      memo: _memoController.text,
+    );
+
+    Dio dio = Dio();
+    dio.options.baseUrl = 'http://34.22.70.110:9090';
+    dio.options.connectTimeout = const Duration(seconds: 5000);
+    dio.options.receiveTimeout = const Duration(seconds: 5000);
+    //print(accessToken);
+    // POST 요청 보내기
+    try {
+      Response response = await dio.get(
+        '/api/boards/$id/voice',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $accessToken',
+          },
+        ),
+        data: postBoard.toJson(),
+      );
+
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => ListPage(),
+        ),
+      );
+    } catch (e) {
+      print('POST Error $e');
+    }
+  }
+
+  void _patchBoard(BuildContext context, id) async {
+    final accessToken = await storage.read(key: 'accessToken');
+
+    final postBoard = PostBoard(
+      title: _titleController.text,
+      location: _locationController.text,
+      memo: _memoController.text,
+    );
+
+    Dio dio = Dio();
+    dio.options.baseUrl = 'http://34.22.70.110:9090';
+    dio.options.connectTimeout = const Duration(seconds: 5000);
+    dio.options.receiveTimeout = const Duration(seconds: 5000);
+    //print(accessToken);
+    // POST 요청 보내기
+    try {
+      Response response = await dio.patch(
+        '/api/boards/$id',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $accessToken',
+          },
+        ),
+        data: postBoard.toJson(),
+      );
+
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => ListPage(),
+        ),
+      );
+    } catch (e) {
+      print('POST Error $e');
+    }
   }
 }

@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
-options: "561378bfb8831e8dc33917040ad92a85f05c27ef81f838f6d7de632b61f3ae6f"
-build_start_time: [1677675864, 719890117]
-build_end_time: [1677675870, 909425973]
-inputs:
-  "/Users/yunhyegyeong/.pub-cache/hosted/pub.dev/assets_audio_player-3.0.6/macos/Classes/AssetsAudioPlayer.swift": [1676862025, 333680152]
-  "/Users/yunhyegyeong/.pub-cache/hosted/pub.dev/assets_audio_player-3.0.6/macos/Classes/AssetsAudioPlayerPlugin.swift": [1676862025, 333433389]
-  "/Users/yunhyegyeong/.pub-cache/hosted/pub.dev/assets_audio_player-3.0.6/macos/Classes/Music.swift": [1676862025, 333121061]

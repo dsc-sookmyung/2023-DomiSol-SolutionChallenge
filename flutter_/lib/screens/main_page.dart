@@ -1,12 +1,12 @@
 // 사용자 메인페이지
 import 'package:flutter/material.dart';
-import 'package:flutter_/screens/direction_text.dart';
-import 'package:flutter_/screens/logo_image.dart';
+import 'package:flutter_/screens/main_page/direction_text.dart';
+import 'package:flutter_/screens/main_page/logo_image.dart';
 import 'package:flutter_/widgets/bedge.dart';
-import 'package:flutter_/screens/tapbarView.dart';
-import 'package:flutter_/screens/name_text.dart';
-import 'package:flutter_/screens/title_text.dart';
-import 'package:flutter_/screens/segementedtab.dart';
+import 'package:flutter_/screens/main_page/tapbarView.dart';
+import 'package:flutter_/screens/main_page/name_text.dart';
+import 'package:flutter_/screens/main_page/title_text.dart';
+import 'package:flutter_/screens/main_page/segementedtab.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_/screens/floating_action_btn.dart';
 
@@ -61,7 +61,7 @@ class MainPage extends StatelessWidget {
           // ],
         ),
         floatingActionButton: 
-              FLoatingActionBtn(context),
+              FLoatingActionBtn(context, googleUser),
       ),
     );
   }

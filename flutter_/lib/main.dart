@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_/screens/generate_screen.dart';
 import 'package:flutter_/screens/home_page.dart';
 void main() {
   runApp(MyApp());
