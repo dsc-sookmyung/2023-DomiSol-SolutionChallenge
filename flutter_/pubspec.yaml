@@ -20,7 +20,7 @@ version: 1.0.0+1
 
 
 environment:
-  sdk: '2.19.5'
+  sdk: '2.19.4'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -39,9 +39,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   
+  #ffmpeg_kit_flutter: 5.1.0
+  #flutter_ffmpeg: ^0.4.2
   http: ^0.13.4
   intl: ^0.17.0
-
   flutter_sound: ^8.1.9
   assets_audio_player: ^3.0.3+3
   syncfusion_flutter_charts: ^20.4.53
