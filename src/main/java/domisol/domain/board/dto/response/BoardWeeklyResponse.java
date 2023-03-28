@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class BoardStatisticResponse {
+@NoArgsConstructor
+public class BoardWeeklyResponse {
     private int monday;
     private int tuesday;
     private int wednesday;
     private int thursday;
     private int friday;
-    private int sunday;
     private int saturday;
+    private int sunday;
 }

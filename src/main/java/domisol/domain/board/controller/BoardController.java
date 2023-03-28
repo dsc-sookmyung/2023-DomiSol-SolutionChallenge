@@ -70,4 +70,11 @@ public class BoardController {
     public BaseResponse<List<WordDetailResponse>> getDaily() {
         return new BaseResponse<>(boardService.getDaily());
     }
+
+    /* 주별 통계 조회하기 */
+    @ResponseBody
+    @GetMapping("/weekly")
+    public BaseResponse<BoardWeeklyResponse> getWeekly() {
+        return new BaseResponse<>(boardService.getWeekly());
+    }
 }
