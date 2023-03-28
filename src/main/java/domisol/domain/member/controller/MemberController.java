@@ -25,5 +25,4 @@ public class MemberController {
     public BaseResponse<LoginResponse> login(@RequestBody LoginRequest request) {
         return new BaseResponse<>(memberService.login(request));
     }
-
 }

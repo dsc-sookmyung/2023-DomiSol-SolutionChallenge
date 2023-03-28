@@ -23,7 +23,7 @@ public class BoardResponse {
         return new BoardResponse(board.getId(), board.getTitle(), board.getLocation(), board.getMemo());
     }
 
-    public static List<BoardResponse> of (List<Board> boards) {
+    public static List<BoardResponse> of(List<Board> boards) {
         return boards.stream().map(BoardResponse::of).collect(Collectors.toList());
     }
 }

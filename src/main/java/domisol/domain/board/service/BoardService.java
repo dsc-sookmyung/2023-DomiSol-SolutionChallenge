@@ -19,7 +19,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -78,7 +81,12 @@ public class BoardService {
             Board board = boardRepository.findByIdAndStatus(request.get(0).getBoardId(), ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
             List<Word> words = serializeRequest(request, board);
             for (Word w : words) {
-                wordRepository.save(w);
+                if (wordRepository.existsByWord(w.getWord())) {
+                    Word exists = wordRepository.findByWord(w.getWord());
+                    exists.setFrequency(exists.getFrequency() + w.getFrequency());
+                } else {
+                    wordRepository.save(w);
+                }
             }
         } catch (JsonProcessingException e) {
             e.getMessage();
@@ -109,5 +117,23 @@ public class BoardService {
         List<Word> words = wordRepository.findByBoardId(id);
         List<WordDetailResponse> wordDetail = WordDetailResponse.of(words);
         return WordResponse.of(board, wordDetail);
+    }
+
+    @Transactional
+    public List<WordDetailResponse> getDaily() {
+        Member member = memberRepository.findById(memberFacade.getCurrentMember().getId()).orElseThrow(() -> new BaseException(MEMBER_NOT_FOUND));
+
+        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59));
+
+        List<Board> boards = boardRepository.findAllByMemberIdAndStartTimeBetween(member.getId(), startDatetime, endDatetime);
+        List<Word> list = new ArrayList<>();
+        for (Board b : boards) {
+            List<Word> words = wordRepository.findByBoardId(b.getId());
+            for (Word w : words) {
+                list.add(w);
+            }
+        }
+        return WordDetailResponse.of(list);
     }
 }

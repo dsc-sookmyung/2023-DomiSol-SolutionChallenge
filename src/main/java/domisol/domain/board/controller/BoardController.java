@@ -2,10 +2,7 @@ package domisol.domain.board.controller;
 
 import domisol.domain.board.dto.request.BoardRequest;
 import domisol.domain.board.dto.request.WordRequest;
-import domisol.domain.board.dto.response.BoardCompactResponse;
-import domisol.domain.board.dto.response.BoardDetailResponse;
-import domisol.domain.board.dto.response.BoardResponse;
-import domisol.domain.board.dto.response.WordResponse;
+import domisol.domain.board.dto.response.*;
 import domisol.domain.board.service.BoardService;
 import domisol.global.BaseResponse;
 import lombok.RequiredArgsConstructor;
@@ -67,6 +64,10 @@ public class BoardController {
         return new BaseResponse<>(boardService.getResult(id));
     }
 
-    /* 주간 통계 조회하기 */
-
+    /* 일별 통계 조회하기 */
+    @ResponseBody
+    @GetMapping("/daily")
+    public BaseResponse<List<WordDetailResponse>> getDaily() {
+        return new BaseResponse<>(boardService.getDaily());
+    }
 }
