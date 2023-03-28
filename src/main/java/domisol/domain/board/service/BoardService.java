@@ -80,8 +80,8 @@ public class BoardService {
             Board board = boardRepository.findByIdAndStatus(request.get(0).getBoardId(), ACTIVE).orElseThrow(() -> new BaseException(BOARD_NOT_FOUND));
             List<Word> words = serializeRequest(request, board);
             for (Word w : words) {
-                if (wordRepository.existsByWord(w.getWord())) {
-                    Word exists = wordRepository.findByWord(w.getWord());
+                if (wordRepository.existsByBoardIdAndWord(request.get(0).getBoardId(), w.getWord())) {
+                    Word exists = wordRepository.findByBoardIdAndWord(request.get(0).getBoardId(), w.getWord());
                     exists.setFrequency(exists.getFrequency() + w.getFrequency());
                 } else {
                     wordRepository.save(w);

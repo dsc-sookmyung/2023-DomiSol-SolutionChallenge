@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface WordRepository extends JpaRepository<Word, Long> {
     List<Word> findByBoardId(Long boardId);
-    boolean existsByWord(String word);
-    Word findByWord(String word);
+    boolean existsByBoardIdAndWord(Long boardId, String word);
+    Word findByBoardIdAndWord(Long boardId, String word);
 }
