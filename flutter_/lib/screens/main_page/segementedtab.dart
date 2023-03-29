@@ -16,20 +16,17 @@ Widget segementedtab(context) {
       tabTextColor: Colors.black45,
       selectedTabTextColor: Colors.black,
       squeezeIntensity: 1,
-      // height: 45,
-      // tabPadding: const EdgeInsets.symmetric(horizontal: 10),
+
       textStyle: Theme.of(context).textTheme.bodyText1,
-      // Options for selection
-      // All specified values will override the [SegmentedTabControl] setting
+
       tabs: [
         SegmentTab(
-          label: '월별',
-          // For example, this overrides [indicatorColor] from [SegmentedTabControl]
+          label: 'Weekly',
         ),
         SegmentTab(
-          label: '주별',
+          label: 'Daily',
         ),
-        const SegmentTab(label: '일별'),
+        const SegmentTab(label: 'Today'),
       ],
     ),
   );

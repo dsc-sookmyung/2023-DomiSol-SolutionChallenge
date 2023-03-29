@@ -1,7 +1,6 @@
 import 'package:flutter_/widgets/login_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_/screens/main_page.dart';
-import 'package:flutter_/widgets/login_auth.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          //crossAxisAlignment: CrossAxisAlignment.center,
+
           children: [
             Image.asset(
               "assets/images/pngegg_1.png",
@@ -34,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                   letterSpacing: 0.3,
                   fontSize: 40,
                   color: Colors.blue,
-                  fontFamily: 'Signatra'), // 폰트정해지면 수정
+                  fontFamily: 'Signatra'),                                  // 폰트정해지면 수정
             ),
             Text(
               'Check',
@@ -43,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                   letterSpacing: 0.3,
                   fontSize: 50,
                   color: Colors.blue,
-                  fontFamily: 'Signatra'), // 폰트정해지면 수정
+                  fontFamily: 'Signatra'),                                 // 폰트정해지면 수정
             ),
             GoogleAuth2(),
           ],

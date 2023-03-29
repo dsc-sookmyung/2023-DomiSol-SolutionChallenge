@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_/providers/board_providers.dart';
 import 'package:flutter_/widgets/login_platform.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
-import 'package:platform/platform.dart';
 import 'package:flutter_/screens/main_page.dart';
 import 'package:flutter_/api/login_controller.dart';
 import 'package:flutter_/api/goolge_login_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'word_analytic.dart';
 
 class GoogleAuth2 extends StatefulWidget {
   @override
@@ -35,6 +34,7 @@ class _GoogleAuth2 extends State<GoogleAuth2> {
           await googleUser!.authentication;
       final String? accessToken = googleAuth.accessToken;
       if (googleUser != null) {
+        
         // null check 추가
         googleLoginResponse? response =
             await loginController.googleLogin(googleUser);
@@ -43,6 +43,8 @@ class _GoogleAuth2 extends State<GoogleAuth2> {
         
         setState(() {
           _loginPlatform = LoginPlatform.google;
+          daily_analytic();
+          
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => MainPage(googleUser: googleUser),
           ));
@@ -51,18 +53,6 @@ class _GoogleAuth2 extends State<GoogleAuth2> {
     } catch (e) {
       print(e);
     }
-
-    // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    //   if(googleUser != null) {
-    //   print('name = ${googleUser.displayName}');
-
-    //   setState((){
-    //     LoginPlatform _loginPlatform = LoginPlatform.google;
-    //     Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context) => MainPage(googleUser:googleUser),));
-
-    //   });
-    //   }
   }
 
   @override

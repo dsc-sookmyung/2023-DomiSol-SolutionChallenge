@@ -9,12 +9,6 @@ Widget bedge(context) {
     child: (SingleChildScrollView(
       child: Column(children: [Text('나의 언어 습관 태그'), chipList()]),
     )),
-    // child: Column(
-    //   children: [
-    //     Text('나의 언어 습관 태그'),
-    //     chipList()
-    //   ],
-    // )
   );
 }
 
@@ -25,7 +19,7 @@ chipList() {
     children: [
       Column(children: [
         _buildChip('욕쟁이 할머니 태그를 획득하셨습니다', Color.fromARGB(255, 247, 247, 247)),
-        _buildChip('천사의 말투 태그를 획득하셨습니다', Color.fromARGB(255, 247, 247, 247)),
+        _buildChip('노력중! 태그를 획득하셨습니다', Color.fromARGB(255, 247, 247, 247)),
         _buildChip('천사의 말투 태그를 획득하셨습니다', Color.fromARGB(255, 247, 247, 247)),
       ])
     ],
