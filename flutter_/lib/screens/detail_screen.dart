@@ -1,33 +1,13 @@
-import 'dart:math';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_/models/board.dart';
-import 'package:flutter_/models/tmp_chart.dart';
-import 'package:flutter_/repositories/board_repository.dart';
-import 'package:flutter_/repositories/tmp_chart_repository.dart';
 import 'package:flutter_/screens/chart_screen.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-List<TmpChart> chartData = TmpChartRepository().getTmpChart();
+import 'package:intl/intl.dart';
 
 class DetailPage extends StatefulWidget {
   final int index;
 
-  DetailPage(this.index);
-
-  List<Color> palette = const <Color>[
-    Color.fromRGBO(75, 135, 185, 1),
-    Color.fromRGBO(192, 108, 132, 1),
-    Color.fromRGBO(246, 114, 128, 1),
-    Color.fromRGBO(248, 177, 149, 1),
-    Color.fromRGBO(116, 180, 155, 1),
-    Color.fromRGBO(0, 168, 181, 1),
-    Color.fromRGBO(73, 76, 162, 1),
-    Color.fromRGBO(255, 205, 96, 1),
-    Color.fromRGBO(255, 240, 219, 1),
-    Color.fromRGBO(238, 238, 238, 1)
-  ];
+  DetailPage({super.key, required this.index});
 
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -36,9 +16,34 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   final storage = const FlutterSecureStorage();
 
+  late String title;
+  late String location;
+  late String memo;
+  late String startTime;
+  late List<dynamic> statistic;
+  
+  List<Color> palette = [
+    Color.fromRGBO(75, 135, 185, 1),
+    Color.fromRGBO(192, 108, 132, 1),
+    Color.fromRGBO(246, 114, 128, 1),
+    Color.fromRGBO(248, 177, 149, 1),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _getVoice(context, widget.index);
+  }
+
   @override
   Widget build(BuildContext context) {
     final int index = widget.index;
+
+    DateTime formmated = DateTime.parse(startTime); // DateTime으로 파싱
+    String date =
+        DateFormat('yyyy년 MM월 dd일').format(formmated); // DateTime으로 파싱
+    String time = DateFormat('HH시 mm분').format(formmated);
+
     return Scaffold(
         appBar: AppBar(),
         body: Center(
@@ -46,13 +51,13 @@ class _DetailPageState extends State<DetailPage> {
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
             margin: const EdgeInsets.only(bottom: 30),
-            /*child: Text(
-              '${board.title} 결과',
+            child: Text(
+              '$title 결과',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
-            ),*/
+            ),
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 30),
@@ -86,10 +91,10 @@ class _DetailPageState extends State<DetailPage> {
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
-                        /*Text(board.location,
+                        Text(location,
                             style: const TextStyle(
                               fontSize: 17,
-                            )),*/
+                            )),
                       ]),
                 ),
                 Padding(
@@ -102,20 +107,8 @@ class _DetailPageState extends State<DetailPage> {
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
-                        /*Text('${board.startTime}',
+                        Text(date,
                             style: const TextStyle(
-                              fontSize: 17,
-                            )),*/
-                      ]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text('시간',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
                       ]),
@@ -125,17 +118,42 @@ class _DetailPageState extends State<DetailPage> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('메모',
+                        const Text('시간',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             )),
-                        /*Text(board.memo,
+                        Text(time,
                             style: const TextStyle(
                               fontSize: 17,
-                            )),*/
+                            )),
                       ]),
-                )
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            '메모',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                            ),
+                          ),
+                          Text(
+                            memo,
+                            style: const TextStyle(
+                              fontSize: 17,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -153,7 +171,7 @@ class _DetailPageState extends State<DetailPage> {
             //child: Text(title),
             child: Column(
               children: [
-                Center(
+                const Center(
                     child: Padding(
                   padding: EdgeInsets.only(top: 25, bottom: 10),
                   child: Text('나의 통계',
@@ -164,12 +182,16 @@ class _DetailPageState extends State<DetailPage> {
                 )),
                 Container(
                   height: 60,
-                  child: ChartScreen(),
+                  child: ChartPage(statistic: statistic),
                 ),
-                Index('${chartData.first.n1}'),
-                Index('${chartData.first.n2}'),
-                Index('${chartData.first.n3}'),
-                Index('${chartData.first.n4}'),
+                Column(
+                  children: List.generate(statistic.length, (i) {
+                    return Index(
+                        color: palette[i],
+                        word: statistic[i]['word'],
+                        ratio: '${statistic[i]['ratio']}');
+                  }).toList(),
+                ),
               ],
             ),
           ),
@@ -194,13 +216,18 @@ class _DetailPageState extends State<DetailPage> {
           },
         ),
       );
-      print(response.data['result'].runtimeType);
+      print(response.data);
       //List<dynamic> boardList = response.data['result'];
 
-      //setState(() {
-      //  boards = boardList;
-      //});
-
+      setState(() {
+        title = response.data['result']['title'];
+        location = response.data['result']['location'];
+        memo = response.data['result']['memo'];
+        startTime = response.data['result']['startTime'];
+        statistic = response.data['result']['statistic'];
+        statistic.sort((a, b) => b['ratio'].compareTo(a['ratio']));
+        statistic = statistic.sublist(0, 4);
+      });
     } catch (e) {
       print('GET Error $e');
     }
@@ -208,36 +235,39 @@ class _DetailPageState extends State<DetailPage> {
 }
 
 class Index extends StatelessWidget {
-  final String txt;
-  const Index(this.txt);
+  String word;
+  String ratio;
+  Color color;
+
+  Index({super.key, required this.word, required this.ratio, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.fromLTRB(60, 20, 50, 10),
+        margin: const EdgeInsets.fromLTRB(60, 20, 50, 10),
         child: Row(
           children: [
             Container(
               height: 22,
               width: 22,
               decoration: BoxDecoration(
-                  color: Color.fromRGBO(75, 135, 185, 1),
+                  color: color,
                   shape: BoxShape.circle),
             ),
             Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 height: 25,
                 width: 200,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '사과',
-                      style: TextStyle(fontSize: 18),
+                      word,
+                      style: const TextStyle(fontSize: 18),
                     ),
                     Text(
-                      '${txt}%',
-                      style: TextStyle(fontSize: 18),
+                      '$ratio%',
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ],
                 )),

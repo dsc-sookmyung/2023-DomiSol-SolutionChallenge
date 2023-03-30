@@ -14,7 +14,7 @@ class LoginController {
       'email': user.email,
       'socialId': user.id,
       'nickname': user.displayName ?? user.email,
-      'profileImage' : user.photoUrl?? '',
+      'profileImage': user.photoUrl ?? '',
     };
 
     try {
@@ -23,12 +23,13 @@ class LoginController {
         '/api/members/login',
         data: userInfo,
         options: Options(contentType: Headers.jsonContentType),
-        
       );
       print(response.statusCode);
-      
-      await storage.write(key: 'accessToken', value: response.data['result']['accessToken']);
 
+      await storage.write(
+          key: 'accessToken', value: response.data['result']['accessToken']);
+      print(response.data['result']['accessToken']);
+      
       return googleLoginResponse(token: response.data['accessToken']);
     } catch (e) {
       print(e);

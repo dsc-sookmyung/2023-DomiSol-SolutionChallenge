@@ -1,4 +1,4 @@
-import 'package:flutter_/models/tmp_chart.dart';
+/*import 'package:flutter_/models/tmp_chart.dart';
 
 class TmpChartRepository {
 
@@ -10,3 +10,4 @@ class TmpChartRepository {
     return _dumyTmpChart;
   }
 }
+*/
