@@ -8,8 +8,6 @@ The term 'Chick' literally refers to language that is discriminatory or sexist, 
 Swearing can be detrimental to mental health and can even pose a threat to physical health, 
 so it is important to be aware of the risks and strive to improve our use of language.
 
-## How to run
-
 ## ✨ Introduction
 
 <p align="center"><img width="400" alt="스크린샷 2023-03-29 오후 9 14 05" src="https://user-images.githubusercontent.com/97823928/228531979-0f3d9263-8775-4d84-acdd-75ff4cbc0061.png"></p>
@@ -39,16 +37,14 @@ However, swearing occupies a considerable proportion in conversations of all age
 * Frontend: Flutter
 * Backend: Spring Framework, MySQL, Google Cloud Platform
 
+## 🤔 Core Function
+|Sign in|Record|Result|Measurement|
+|-----|------|------|--------|
+|![KakaoTalk_Photo_2023-03-31-23-41-57](https://user-images.githubusercontent.com/97823928/229152250-7ee261b9-fbd8-408f-8710-56616707cee4.gif)|![KakaoTalk_Photo_2023-03-31-23-40-58](https://user-images.githubusercontent.com/97823928/229152024-cfb23952-e88c-4696-9b14-7b5de574407d.gif)|![KakaoTalk_Photo_2023-03-31-23-33-05](https://user-images.githubusercontent.com/97823928/229149927-c093d472-4ea9-48e5-ba30-a5e9a62b55b3.gif)|![KakaoTalk_Photo_2023-03-31-23-34-22](https://user-images.githubusercontent.com/97823928/229150331-ebbb1830-b5f5-4407-844d-a4ef8a720a23.gif)|
 
 ## 📽 Demo Video Link
 
 <img width="900" alt="스크린샷 2023-03-31 오후 10 16 42" src="https://user-images.githubusercontent.com/97823928/229130393-c214db87-d1dd-4545-86d1-a739f49f5dde.png">
-
-## 🤔 How to use
-
-|![KakaoTalk_Photo_2023-03-31-23-41-57](https://user-images.githubusercontent.com/97823928/229152250-7ee261b9-fbd8-408f-8710-56616707cee4.gif)|![KakaoTalk_Photo_2023-03-31-23-40-58](https://user-images.githubusercontent.com/97823928/229152024-cfb23952-e88c-4696-9b14-7b5de574407d.gif)|![KakaoTalk_Photo_2023-03-31-23-33-05](https://user-images.githubusercontent.com/97823928/229149927-c093d472-4ea9-48e5-ba30-a5e9a62b55b3.gif)|![KakaoTalk_Photo_2023-03-31-23-34-22](https://user-images.githubusercontent.com/97823928/229150331-ebbb1830-b5f5-4407-844d-a4ef8a720a23.gif)|
-|-----|------|------|--------|
-
 
 ## 👥 Contributors
 
