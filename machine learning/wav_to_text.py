@@ -17,9 +17,11 @@ def add_board_id(data, board_id):
 def get_word_frequency():
     r = sr.Recognizer()
 
-    sound = AudioSegment.from_file("test4.m4a")
-    sound.export("test.wav", format="wav")
-    recording_file = sr.AudioFile('test.wav')
+    # Get the audio file from Flutter
+    audio_file = request.files['audio']
+    
+    audio_file.export("recording.wav", format="wav")
+    recording_file = sr.AudioFile('recording.wav')
 
     with recording_file as source:
         audio = r.record(source)
