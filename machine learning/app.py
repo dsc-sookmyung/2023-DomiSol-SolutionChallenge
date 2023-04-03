@@ -44,8 +44,6 @@ def get_word_frequency():
     data_with_board_id = add_board_id(data, board_id_from_flutter)
     # print(data_with_board_id)
 
-    # (replace this with the code to send the response in your application)
-#     print(response)
     headers = {"Content-Type": "application/json"}
     data_json = json.dumps(data_with_board_id)
     
