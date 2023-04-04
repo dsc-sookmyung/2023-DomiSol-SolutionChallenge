@@ -46,6 +46,10 @@ However, swearing occupies a considerable proportion in conversations of all age
 
 <img width="900" alt="스크린샷 2023-03-31 오후 10 16 42" src="https://user-images.githubusercontent.com/97823928/229130393-c214db87-d1dd-4545-86d1-a739f49f5dde.png">
 
+## ✔ How to Run
+Download the apk file here.
+Run the apk file on your phone.
+
 ## 👥 Contributors
 
 |[안재현](https://github.com/Jaehyeonee)|[윤혜경](https://github.com/hyetae)|[전예진](https://github.com/yaezzin)|[주다애](https://github.com/jooda00)|
