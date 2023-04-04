@@ -1,16 +1,39 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_/models/tmp_chart.dart';
-import 'package:flutter_/repositories/tmp_chart_repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'detail_screen.dart';
 
 // ignore: must_be_immutable
-class ChartScreen extends StatelessWidget {
-  ChartScreen({super.key});
+class ChartPage extends StatefulWidget {
+  final List<dynamic> statistic;
+  
 
-  List<TmpChart> chartData = TmpChartRepository().getTmpChart();
+  ChartPage({super.key, required this.statistic});
 
   @override
+  _ChartPageState createState() => _ChartPageState();
+  
+}
+
+class _ChartPageState extends State<ChartPage> {
+  @override
+
+  
   Widget build(BuildContext context) {
+    List<dynamic> statistic = widget.statistic;
+    List<double> ratioList = statistic.map<double>((item) => item['ratio']).toList();
+    final List<Chart> chartData = [Chart('차트', ratioList)];
+    /*
+    List<Statistic> statisticList = statistic.map((data) {
+      return Statistic(
+        word: data['word'],
+        frequency: data['frequency'],
+        ratio: data['ratio'],
+      );
+    }).toList();
+    */
+
     return SfCartesianChart(
         plotAreaBorderWidth: 0,
         primaryXAxis: CategoryAxis(
@@ -20,27 +43,27 @@ class ChartScreen extends StatelessWidget {
           isVisible: false,
         ),
         series: <ChartSeries>[
-          StackedBar100Series<TmpChart, String>(
+          StackedBar100Series<Chart, String>(
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
               dataSource: chartData,
-              xValueMapper: (TmpChart data, _) => data.name,
-              yValueMapper: (TmpChart data, _) => data.n1),
-          StackedBar100Series<TmpChart, String>(
+              xValueMapper: (Chart data, _) => data.word,
+              yValueMapper: (Chart data, int index) => data.ratio[0]),
+          StackedBar100Series<Chart, String>(
               dataSource: chartData,
-              xValueMapper: (TmpChart data, _) => data.name,
-              yValueMapper: (TmpChart data, _) => data.n2),
-          StackedBar100Series<TmpChart, String>(
+              xValueMapper: (Chart data, _) => data.word,
+              yValueMapper: (Chart data, int index) => data.ratio[1]),
+          StackedBar100Series<Chart, String>(
               dataSource: chartData,
-              xValueMapper: (TmpChart data, _) => data.name,
-              yValueMapper: (TmpChart data, _) => data.n3),
-          StackedBar100Series<TmpChart, String>(
+              xValueMapper: (Chart data, _) => data.word,
+              yValueMapper: (Chart data, int index) => data.ratio[2]),
+          StackedBar100Series<Chart, String>(
               borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(8),
                   bottomRight: Radius.circular(8)),
               dataSource: chartData,
-              xValueMapper: (TmpChart data, _) => data.name,
-              yValueMapper: (TmpChart data, _) => data.n4),
+              xValueMapper: (Chart data, _) => data.word,
+              yValueMapper: (Chart data, _) => data.ratio[3]),
         ]);
   }
 }

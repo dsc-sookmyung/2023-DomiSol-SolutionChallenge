@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_/screens/modify_screen.dart';
 import 'package:flutter_/screens/detail_screen.dart';
@@ -30,6 +31,10 @@ class _ListPageState extends State<ListPage> {
         padding: const EdgeInsets.all(10),
         itemCount: boards.length,
         itemBuilder: (context, index) {
+          DateTime startTime = DateTime.parse(boards[index]['startTime']); // DateTime으로 파싱
+          String date = DateFormat('yyyy년 MM월 dd일').format(startTime); // DateTime으로 파싱
+          String time = DateFormat('HH시 mm분').format(startTime); 
+          // "yyyy년 MM월 dd일" 형식의 문자열로 변환
           return Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
@@ -38,9 +43,10 @@ class _ListPageState extends State<ListPage> {
             height: 120,
             child: GestureDetector(
               onTap: () {
-                debugPrint('The record has been tapped');
+                debugPrint('The record $index has been tapped');
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => DetailPage(index)));
+                  
+                    builder: (BuildContext context) => DetailPage(index: boards[index]['boardId'],)));
               },
               child: Row(children: [
                 Expanded(
@@ -71,7 +77,13 @@ class _ListPageState extends State<ListPage> {
                                     ),
                                   ),
                                   Text(
-                                    '${boards[index]['startTime']}',
+                                    date,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Text(
+                                    time,
                                     style: const TextStyle(
                                       fontSize: 16,
                                     ),
@@ -119,7 +131,7 @@ class _ListPageState extends State<ListPage> {
                                                     MaterialPageRoute(
                                                         builder: (BuildContext
                                                                 context) =>
-                                                            ModifyPage(index)));
+                                                            ModifyPage(boards[index]['boardId'])));
                                               },
                                               child: const Text(
                                                 '수정하기',
@@ -138,7 +150,7 @@ class _ListPageState extends State<ListPage> {
                                               onTap: () {
                                                 debugPrint(
                                                     'The delete has been tapped');
-                                                _deleteBoards(context, index);
+                                                _deleteBoards(context, boards[index]['boardId']);
                                                 Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                         builder: (BuildContext

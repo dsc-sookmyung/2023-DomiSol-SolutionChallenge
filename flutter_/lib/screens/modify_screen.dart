@@ -16,11 +16,23 @@ class ModifyPage extends StatefulWidget {
 class _ModifyPageState extends State<ModifyPage> {
   final storage = const FlutterSecureStorage();
 
+  String? xTitle;
+  String? xLocation;
+  String? xMemo;
+
   final _titleController = TextEditingController();
   final _locationController = TextEditingController();
   final _memoController = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+    _getVoice(context, widget.index);
+  }
+
+  @override
   void dispose() {
+    super.dispose();
     _titleController.dispose();
     _locationController.dispose();
     _memoController.dispose();
@@ -28,7 +40,7 @@ class _ModifyPageState extends State<ModifyPage> {
 
   @override
   Widget build(BuildContext context) {
-  final int index = widget.index;
+    final int index = widget.index;
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -46,11 +58,14 @@ class _ModifyPageState extends State<ModifyPage> {
               ),
             ),
             const SizedBox(height: 30),
-            _buildInputBox('제목', height: 60, controller: _titleController),
+            _buildInputBox('제목',
+                height: 60, controller: _titleController, x: xTitle),
             const SizedBox(height: 16),
-            _buildInputBox('위치', height: 60, controller: _locationController),
+            _buildInputBox('위치',
+                height: 60, controller: _locationController, x: xLocation),
             const SizedBox(height: 16),
-            _buildInputBox('메모', height: 100, controller: _memoController),
+            _buildInputBox('메모',
+                height: 100, controller: _memoController, x: xMemo),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
@@ -64,8 +79,8 @@ class _ModifyPageState extends State<ModifyPage> {
     );
   }
 
-  Widget _buildInputBox(String hintText,
-      {double? height, TextEditingController? controller}) {
+  Widget _buildInputBox(String text,
+      {double? height, TextEditingController? controller, String? x}) {
     return Container(
       margin: const EdgeInsets.fromLTRB(13, 6, 13, 6),
       padding: const EdgeInsets.only(top: 5),
@@ -80,7 +95,8 @@ class _ModifyPageState extends State<ModifyPage> {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
-          hintText: hintText,
+          labelText: text,
+          hintText: text,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           border: InputBorder.none,
         ),
@@ -91,12 +107,6 @@ class _ModifyPageState extends State<ModifyPage> {
 
   void _getVoice(BuildContext context, id) async {
     final accessToken = await storage.read(key: 'accessToken');
-
-    final postBoard = PostBoard(
-      title: _titleController.text,
-      location: _locationController.text,
-      memo: _memoController.text,
-    );
 
     Dio dio = Dio();
     dio.options.baseUrl = 'http://34.22.70.110:9090';
@@ -112,16 +122,20 @@ class _ModifyPageState extends State<ModifyPage> {
             'Authorization': 'Bearer $accessToken',
           },
         ),
-        data: postBoard.toJson(),
       );
 
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (BuildContext context) => ListPage(),
-        ),
-      );
+      setState(() {
+        xTitle = response.data['result']['title'];
+        xLocation = response.data['result']['location'];
+        xMemo = response.data['result']['memo'];
+
+        _titleController.text = xTitle!;
+        _locationController.text = xLocation!;
+        _memoController.text = xMemo!;
+      });
+
     } catch (e) {
-      print('POST Error $e');
+      print('GET Error $e');
     }
   }
 
@@ -157,7 +171,7 @@ class _ModifyPageState extends State<ModifyPage> {
         ),
       );
     } catch (e) {
-      print('POST Error $e');
+      print('PATCH Error $e');
     }
   }
 }

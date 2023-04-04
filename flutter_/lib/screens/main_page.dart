@@ -14,7 +14,7 @@ import 'package:flutter_/screens/floating_action_btn.dart';
 class MainPage extends StatelessWidget {
 
   String direction = '이번 주 욕설 사용량이 증가했어요';                                        // 통계 값에 따라 데이터를 전달 받을 string변수
-  
+
   final GoogleSignInAccount googleUser;
 
   MainPage({
