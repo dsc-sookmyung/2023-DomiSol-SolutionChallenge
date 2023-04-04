@@ -61,7 +61,7 @@ class _GeneratePageState extends State<GeneratePage> {
     );
   }
 
-  Widget _buildInputBox(String hintText,
+  Widget _buildInputBox(String text,
       {double? height, TextEditingController? controller}) {
     return Container(
       margin: const EdgeInsets.fromLTRB(13, 6, 13, 6),
@@ -77,7 +77,8 @@ class _GeneratePageState extends State<GeneratePage> {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
-          hintText: hintText,
+          labelText: text,
+          hintText: text,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           border: InputBorder.none,
         ),

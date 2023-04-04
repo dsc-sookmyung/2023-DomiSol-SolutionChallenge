@@ -1,9 +1,6 @@
-class TmpChart {
-  final String name;
-  final num n1;
-  final num n2;
-  final num n3;
-  final num n4;
+class Chart {
+  final String word;
+  final List<double> ratio;
 
-  TmpChart(this.name, this.n1, this.n2, this.n3, this.n4);
+  Chart(this.word, this.ratio);
 }
