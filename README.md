@@ -47,8 +47,14 @@ However, swearing occupies a considerable proportion in conversations of all age
 [![스크린샷](https://user-images.githubusercontent.com/97823928/229130393-c214db87-d1dd-4545-86d1-a739f49f5dde.png)](https://www.youtube.com/watch?v=l-GAw5tZXZA&t=1s)
 
 ## ✔ How to Run
-Download the apk file here.
-Run the apk file on your phone.
+
+```bash
+$ git clone https://github.com/dsc-sookmyung/2023-DomiSol-SolutionChallenge.git
+$ cd {path where you cloned the project}
+$ flutter run
+```
+or go to tab Releases tag and download .zip file
+
 
 ## 👥 Contributors
 
