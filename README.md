@@ -53,7 +53,7 @@ $ git clone https://github.com/dsc-sookmyung/2023-DomiSol-SolutionChallenge.git
 $ cd {path where you cloned the project}
 $ flutter run
 ```
-or go to tab Releases tag and download .zip file
+```or please go to tab Releases tag and download .zip file```
 
 
 ## 👥 Contributors
