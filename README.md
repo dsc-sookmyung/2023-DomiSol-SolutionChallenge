@@ -54,7 +54,9 @@ $ cd {path where you cloned the project}
 $ flutter run
 ```
 <img width="613" alt="howtorun" src="https://user-images.githubusercontent.com/92504386/229976809-82be4b92-9eb5-4e2c-86a3-e4878bd41f63.png">
+
 ```or please go to tab Releases tag and download .zip file```
+
 (*this project only can run in IOS environment.)
 
 ## 👥 Contributors
